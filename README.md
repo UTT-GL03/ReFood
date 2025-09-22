@@ -15,7 +15,7 @@ Enjeu écologique fort : gaspiller = produire pour rien et donc surconsommation 
 
 Lutte contre la précarité : 
 
-- + de 16 millions de personnes vivent avec moins de 3,5 euros /personne/jour en France
+- plus de 16 millions de personnes vivent avec moins de 3,5 euros /personne/jour en France
 
 Enjeu social majeur : accès facilité à de la nourriture à petit prix ou gratuite grâce aux échanges locaux
 
