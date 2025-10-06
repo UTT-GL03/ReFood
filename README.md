@@ -58,10 +58,10 @@ Nous avons choisi de comparer l’impact des scénarios sur plusieurs services w
 
 Service           | Score (sur 100) | Classe    | Détail des mesures
 -----------------|----------------|-----------|-------------------
-Geev              | 59             | C 🟦      | [..](file:///C:/Users/ahama/OneDrive/Bureau/ISI3/GL03/ScoreEco_Geev/Geev/statements/ecoindex-environmental-statement.html) 
-JeDonne.fr        | 33             | E 🟥      | [..](file:///C:/Users/ahama/OneDrive/Bureau/ISI3/GL03/ScoreEco_Geev/2025-10-06T13-29-20.934Z/statements/ecoindex-environmental-statement.html) 
-Donnons.org       | 14             | F 🟪      | [..](file:///C:/Users/ahama/OneDrive/Bureau/ISI3/GL03/ScoreEco_Geev/2025-10-06T13-16-38.003Z_donnons/statements/ecoindex-environmental-statement.html) 
-ToutDonner.com    | 71             | B 🟩      | [..](file:///C:/Users/ahama/OneDrive/Bureau/ISI3/GL03/ScoreEco_Geev/2025-09-29T14-47-24.057Z_toutdonner/statements/ecoindex-environmental-statement.html) 
+Geev              | 59             | C 🟦      | [..](https://github.com/UTT-GL03/ReFood/blob/main/geev.md) 
+JeDonne.fr        | 33             | E 🟥      | [..](https://github.com/UTT-GL03/ReFood/blob/main/jedonne.md)
+Donnons.org       | 14             | F 🟪      | [..](https://github.com/UTT-GL03/ReFood/blob/main/donnons.md)
+ToutDonner.com    | 71             | B 🟩      | [..](https://github.com/UTT-GL03/ReFood/blob/main/toutdonner.md)
 
 *Tab.1 : Mesure de l'EcoIndex moyen des services web étudiés.*
 
