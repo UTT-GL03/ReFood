@@ -52,3 +52,27 @@ En revanche, des effets rebonds sont possibles : la surconsommation ou les déri
 3. Il clique sur un item trouvé pour consulter ses détails.
 
 ---
+# Impact de l'exécution des scénarios auprès de différents services concurrents
+
+Nous avons choisi de comparer l’impact des scénarios sur plusieurs services web de don et partage d’aliments : Geev, Donnons.org, ToutDonner.com et JeDonne.fr. Les résultats EcoIndex ont été obtenus via EcoIndexApp, afin d’évaluer l’impact environnemental des pages web les plus consultées et de parcours types.
+
+Service           | Score (sur 100) | Classe    | Détail des mesures
+-----------------|----------------|-----------|-------------------
+Geev              | 59             | C 🟦      | [..](file:///C:/Users/ahama/OneDrive/Bureau/ISI3/GL03/ScoreEco_Geev/Geev/statements/ecoindex-environmental-statement.html) 
+JeDonne.fr        | 33             | E 🟥      | [..](file:///C:/Users/ahama/OneDrive/Bureau/ISI3/GL03/ScoreEco_Geev/2025-10-06T13-29-20.934Z/statements/ecoindex-environmental-statement.html) 
+Donnons.org       | 14             | F 🟪      | [..](file:///C:/Users/ahama/OneDrive/Bureau/ISI3/GL03/ScoreEco_Geev/2025-10-06T13-16-38.003Z_donnons/statements/ecoindex-environmental-statement.html) 
+ToutDonner.com    | 71             | B 🟩      | [..](file:///C:/Users/ahama/OneDrive/Bureau/ISI3/GL03/ScoreEco_Geev/2025-09-29T14-47-24.057Z_toutdonner/statements/ecoindex-environmental-statement.html) 
+
+*Tab.1 : Mesure de l'EcoIndex moyen des services web étudiés.*
+
+## Analyse
+Les mesures de l'impact moyen de ces services (cf. Tab.1) révèlent des **classes EcoIndex très contrastées**.  
+- Les pages les plus mal classées (**JeDonne.fr et Donnons.org**) présentent souvent :  
+  - un grand nombre de requêtes et scripts tiers,  
+  - des pages très volumineuses avec médias non optimisés,  
+  - des éléments dynamiques ou publicitaires intensifs.  
+- À l'inverse, le bon classement (**ToutDonner.com**) montre qu'il existe une marge de progression significative à condition d'adopter des pratiques d’éco-conception : optimisation des images et vidéos, réduction du nombre de requêtes et d’éléments tiers, et parcours utilisateur simplifiés.  
+
+**Geev**, quant à lui, obtient un score intermédiaire (C 🟦), avec certaines pages optimisées et d'autres encore perfectibles.  
+
+Cette analyse illustre que **ReFood** peut tirer parti de ces bonnes pratiques pour limiter l’impact environnemental de son service web, tout en offrant une expérience utilisateur fluide et efficace.
