@@ -84,7 +84,39 @@ C'est pourquoi il est nécessaire à ce stade d'analyser leur modèle économiqu
 
 | Service | Visiteur anonyme | Utilisateur inscrit |
 |----------|------------------|---------------------|
-| **Geev** | Présence de publicités (régie tierce) <br> Suivi (géolocalisation et cookies analytiques) <br> Accès limité aux annonces sans inscription | Don / récupération d’objets ou de nourriture <br> Accès complet aux fonctionnalités (messagerie, filtres, favoris) <br> Système de crédits (« bananes ») <br> Abonnement *Geev Plus* : suppression des pubs, annonces exclusives, meilleure visibilité |
-| **Donnons.org** | Présence de cookies analytiques et publicitaires (paramétrables) <br> Accès libre à la recherche d’objets | Don / récupération d’objets <br> Création d’un profil public <br> Accès à la messagerie interne <br> Aucun abonnement payant connu |
-| **ToutDonner.com** | Site sans publicité apparente <br> Pas de suivi invasif détecté <br> Accès rapide sans inscription obligatoire | Don / récupération d’objets <br> Messagerie simple après connexion <br> Interface légère et peu consommatrice |
-| **JeDonne.fr** | Présence de cookies standards (statistiques et performance) <br> Pas de publicités visibles sur les pages principales | Don / récupération d’objets <br> Accès complet après inscription (profil + messagerie) <br> Application mobile disponible (modèle gratuit) |
+| **Geev** | Publicités (régie tierce) <br> Suivi, géolocalisation et cookies analytiques <br> Accès limité aux annonces sans inscription | Don / récupération d’objets ou de nourriture <br> Accès complet aux fonctionnalités (messagerie, filtres, favoris) <br> Système de crédits (« bananes ») <br> Abonnement *Geev Plus* : suppression des pubs, annonces exclusives, meilleure visibilité |
+| **Donnons.org** | Cookies analytiques et publicitaires <br> Accès libre à la recherche d’objets | Don / récupération d’objets <br> Création d’un profil public <br> Accès à la messagerie <br> Aucun abonnement payant connu |
+| **ToutDonner.com** | Site sans publicité apparente <br> Pas de suivi détecté <br> Accès rapide sans inscription obligatoire | Don / récupération d’objets <br> Messagerie simple après connexion <br> Interface légère et peu consommatrice |
+| **JeDonne.fr** | Cookies standards (statistiques et performance) <br> Pas de publicités visibles sur les pages | Don / récupération d’objets <br> Accès complet après inscription (profil + messagerie) |
+
+**Tab. 2 : Offre des services de dons alimentaires et matériels.**
+
+Les modèles de ces plateformes reposent en majorité sur un accès gratuit, financé par des mécanismes indirects (publicité, valorisation de données).  
+Geev est le cas le mieux documenté de **modèle mixte gratuit + abonnement**, avec une offre Premium sans publicité.  
+
+À l’inverse, **ToutDonner** et **JeDonne.fr** se distinguent par une approche plus sobre : peu ou pas de suivi publicitaire, interface allégée et accès simplifié.  
+**Donnons.org** ont un positionnement intermédiaire, sans abonnement ni publicité intrusive, mais avec un suivi analytique classique (cookies et statistiques).
+
+### Sources de revenus possibles
+
+| Source de revenus | Montant unitaire estimé | Quantité nécessaire pour financer un salaire* |
+|--------------------|------------------------|----------------------------------------------|
+| Publicité (régie tierce) | 0,00046 € | ~7 800 000 vues |
+| Abonnement premium (Geev Plus) | 2 € / mois | 1 500 abonnés |
+| Dons / contributions volontaires | 5 € | 7 000 donateurs |
+| Publicité intégrée | 10 000 € | 0,3 campagnes |
+
+**Tab. 3 : Sources de revenus possibles pour les services de dons en ligne.**  
+\*Estimations indicatives basées sur des moyennes du secteur.
+
+L’étude des plateformes montre que :
+- le recours à une régie publicitaire tierce accroît l’empreinte environnementale (requêtes externes, scripts, vidéos, cookies) ;
+- les modèles basés sur les abonnements ou dons sont plus sobres, car ils n’impliquent ni traqueurs ni appels à des serveurs publicitaires ;
+- une interface épurée et sans publicité (comme sur ToutDonner) contribue directement à un meilleur score d’éco-conception (EcoIndex plus élevé).
+
+Donc afin de réduire l’impact écologique tout en assurant la viabilité du service, nous proposons de :
+- renoncer aux publicités gérées par des régies tierces ;
+- adopter un modèle reposant sur **les dons volontaires** ou **un abonnement symbolique** (1 € / mois) ;
+- privilégier une régie publicitaire intégrée, avec des visuels légers et limités aux partenaires solidaires ;
+- réduire le suivi utilisateur au strict minimum (cookies essentiels uniquement) ;
+- favoriser une conception technique économe : pages statiques, et compression des médias.
