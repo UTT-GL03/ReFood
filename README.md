@@ -99,12 +99,18 @@ Geev est le cas le mieux documenté de **modèle mixte gratuit + abonnement**, a
 
 ### Sources de revenus possibles
 
-| Source de revenus | Montant unitaire estimé | Quantité nécessaire pour financer un salaire* |
+| Source de revenus | Montant unitaire estimé | Quantité nécessaire pour financer un salaire [^salaire] |
 |--------------------|------------------------|----------------------------------------------|
-| Publicité (régie tierce) | 0,00046 € | ~7 800 000 vues |
-| Abonnement premium (Geev Plus) | 2 € / mois | 1 500 abonnés |
-| Dons / contributions volontaires | 5 € | 7 000 donateurs |
-| Publicité intégrée | 10 000 € | 0,3 campagnes |
+| Publicité (régie tierce) | 0,00046 € [^rpm] | ~7 800 000 vues |
+| Abonnement premium (Geev Plus) |  2 € / mois [^geev] | 1 800 abonnés |
+| Dons / contributions volontaires | 5 € [^helloasso] |  800 donateurs |
+| Publicité intégrée | 10 000 € [^encart] | 0,35 campagnes |
+
+[^salaire]: Basé sur le coût total employeur du salaire médian 2025, soit 3569 € environ (source : [URSSAF](https://mon-entreprise.urssaf.fr/simulateurs/salaire-brut-net)).  
+[^rpm]: Estimation moyenne du revenu pour mille vues (CPM) sur les régies tierces type Google AdSense : 0,46 € / 1000 vues (source : [AdCPMRates](https://adcpmrates.com/2022/09/07/adsense-cpm-and-cpc-rates-in-germany-2023/)).  
+[^geev]: Basé sur le tarif d’abonnement **Geev Plus** : 1,99 € / mois sur le [Google Play Store](https://play.google.com/store/apps/details?id=com.geev.geevapp).  
+[^helloasso]: Estimation issue des contributions moyennes observées sur des plateformes de dons solidaires comme [HelloAsso](https://www.helloasso.com/) ou [Wikipédia](https://donate.wikimedia.org/).  
+[^encart]: Montant indicatif d’une campagne sponsorisée solidaire ou municipale (10 000 €) estimé d’après les tarifs d’encarts locaux et les partenariats associatifs courants.
 
 **Tab. 3 : Sources de revenus possibles pour les services de dons en ligne.**  
 \*Estimations indicatives basées sur des moyennes du secteur.
