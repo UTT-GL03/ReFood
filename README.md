@@ -91,7 +91,7 @@ C'est pourquoi il est nécessaire à ce stade d'analyser leur modèle économiqu
 
 **Tab. 2 : Offre des services de dons alimentaires et matériels.**
 
-Les modèles de ces plateformes reposent en majorité sur un accès gratuit, financé par des mécanismes indirects (publicité, valorisation de données).  
+Les modèles de ces plateformes reposent en majorité sur un accès gratuit, financé par publicité et par la valorisation de données.  
 Geev est le cas le mieux documenté de **modèle mixte gratuit + abonnement**, avec une offre Premium sans publicité.  
 
 À l’inverse, **ToutDonner** et **JeDonne.fr** se distinguent par une approche plus sobre : peu ou pas de suivi publicitaire, interface allégée et accès simplifié.  
