@@ -76,3 +76,15 @@ Les mesures de l'impact moyen de ces services (cf. Tab.1) révèlent des **class
 **Geev**, quant à lui, obtient un score intermédiaire (C 🟦), avec certaines pages optimisées et d'autres encore perfectibles.  
 
 Cette analyse illustre que **ReFood** peut tirer parti de ces bonnes pratiques pour limiter l’impact environnemental de son service web, tout en offrant une expérience utilisateur fluide et efficace.
+
+## Modèle économique
+
+Comme nous l'avons vu dans la section précédente, parmi les choix de conception ayant le plus d'impact environnemental, la plupart sont directement liés au modèle économique du service.  
+C'est pourquoi il est nécessaire à ce stade d'analyser leur modèle économique et de définir notre propre modèle permettant une conception plus frugale.
+
+| Service | Visiteur anonyme | Utilisateur inscrit |
+|----------|------------------|---------------------|
+| **Geev** | Présence de publicités (régie tierce) <br> Suivi (géolocalisation et cookies analytiques) <br> Accès limité aux annonces sans inscription | Don / récupération d’objets ou de nourriture <br> Accès complet aux fonctionnalités (messagerie, filtres, favoris) <br> Système de crédits (« bananes ») <br> Abonnement *Geev Plus* : suppression des pubs, annonces exclusives, meilleure visibilité |
+| **Donnons.org** | Présence de cookies analytiques et publicitaires (paramétrables) <br> Accès libre à la recherche d’objets | Don / récupération d’objets <br> Création d’un profil public <br> Accès à la messagerie interne <br> Aucun abonnement payant connu |
+| **ToutDonner.com** | Site sans publicité apparente <br> Pas de suivi invasif détecté <br> Accès rapide sans inscription obligatoire | Don / récupération d’objets <br> Messagerie simple après connexion <br> Interface légère et peu consommatrice |
+| **JeDonne.fr** | Présence de cookies standards (statistiques et performance) <br> Pas de publicités visibles sur les pages principales | Don / récupération d’objets <br> Accès complet après inscription (profil + messagerie) <br> Application mobile disponible (modèle gratuit) |
