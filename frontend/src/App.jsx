@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Home from '../pages/Home'
-import reactLogo from './assets/react.svg'
+import Article from '../pages/Article'
+import reactLogo from './assets/react.svg'  
 import './App.css'
 import '@picocss/pico/css/pico.min.css'
 
@@ -16,6 +17,7 @@ function App() {
 
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/offre/:id" element={<Article />} />
         {/* Autres routes possibles :
             <Route path="/offres" element={<OffresPage />} />
             <Route path="/utilisateurs" element={<UsersPage />} />
