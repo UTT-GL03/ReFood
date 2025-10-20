@@ -4,7 +4,13 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import data from '../assets/sample_data.json'  // chemin corrigé
 import './App.css'
+import dayjs from 'dayjs'
+import relativeTime from 'dayjs/plugin/relativeTime'
+import 'dayjs/locale/fr'
+import '@picocss/pico/css/pico.min.css'
 
+dayjs.extend(relativeTime)
+dayjs.locale('fr')
 function App() {
   return (
     <>
@@ -24,11 +30,13 @@ function App() {
   )
 }
 
-function Offre({ titre, description, quantite, type, etat, ville, statut, date_limite }) {
+function Offre({ titre, description, quantite, type, etat, ville, statut, date_publication, date_limite }) {
   return (
     <article className="offre">
       <header>
         <span className="tag">{decodeHtml(type)}</span> — <span>{etat}</span>
+        <br />
+         <time>publié {dayjs(date_publication).fromNow()}</time>
       </header>
       <h2>{decodeHtml(titre)}</h2>
       <p>{description}</p>

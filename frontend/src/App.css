@@ -5,6 +5,10 @@
   text-align: center;
 }
 
+body {
+  background-color: springgreen;
+}
+
 .logo {
   height: 6em;
   padding: 1.5em;
@@ -46,12 +50,17 @@
   font-size: 0.8em;
 }
 
+h1{
+  color: white !important;
+}
+
+
 h2 {
-  color: black;
+  color: #000000 !important;
 }
 
 p {
-  color:black;
+  color:black !important;
 }
 
 @keyframes logo-spin {
