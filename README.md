@@ -126,3 +126,22 @@ Donc afin de réduire l’impact écologique tout en assurant la viabilité du s
 - privilégier une régie publicitaire intégrée, avec des visuels légers et limités aux partenaires solidaires ;
 - réduire le suivi utilisateur au strict minimum (cookies essentiels uniquement) ;
 - favoriser une conception technique économe : pages statiques, et compression des médias.
+
+---
+
+## Maquette de l'interface et échantillon de données
+
+Au vu des différents services comparés, des exigences environnementales exprimées plus haut et des scénarios retenus, nous avons défini pour notre prototype une maquette de l'interface et un échantillon de données réalistes.
+
+Les ressources Web représentées dans notre application ReFood sont de deux types principaux : offres de nourriture et utilisateur.
+
+- Chaque offre représente un don alimentaire proposé par un utilisateur.
+Elle contient un titre, une description, une quantité, un type d’aliment, un état (frais, surgelé, etc.), une ville et une date limite de validité. URI : /offres pour toutes les offres /offres/{id} pour une offre spécifique.
+
+- Chaque utilisateur correspond à une personne ou une structure (association, commerce, particulier) qui publie ou consulte des offres. URI : /utilisateurs/{id}
+
+<img width="1080" height="1080" alt="Design sans titre" src="https://github.com/user-attachments/assets/aa5cfb1e-cd77-4ec6-a72c-57f8a91fe96e" />
+
+Fig.1: Maquette de l'interface du prototype - à droite : type de une du site avec des offres, à gauche : type de page d'une offre.
+
+Pour des raisons de respect des droits d’auteur, nous utilisons des données générées avec dummy-json. Bien que fictives, ces données respectent la structure des services des services concurrents (voir [modèle de données](https://github.com/UTT-GL03/ReFood/blob/main/sample_data.hbs)).
