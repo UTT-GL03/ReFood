@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
 import Home from '../pages/Home'
 import Article from '../pages/Article'
 import reactLogo from './assets/react.svg'  
@@ -10,8 +10,10 @@ function App() {
     <BrowserRouter>
       <header>
         <h1>
-          <img src={reactLogo} alt="React logo" style={{ height: "40px" }} />
-          ReFood
+            <Link to="/">
+              <img src={reactLogo} alt="React logo" style={{ height: "40px" }} />
+              ReFood
+            </Link>
         </h1>
       </header>
 
