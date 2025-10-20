@@ -140,8 +140,9 @@ Elle contient un titre, une description, une quantité, un type d’aliment, un 
 
 - Chaque utilisateur correspond à une personne ou une structure (association, commerce, particulier) qui publie ou consulte des offres. URI : /utilisateurs/{id}
 
-<img width="1080" height="1080" alt="Design sans titre" src="https://github.com/user-attachments/assets/aa5cfb1e-cd77-4ec6-a72c-57f8a91fe96e" />
+<img width="1080" height="720" alt="Design sans titre (1)" src="https://github.com/user-attachments/assets/675a23bf-57ec-446e-ac7d-cfd4a1492549" />
 
 Fig.1: Maquette de l'interface du prototype - à droite : type de une du site avec des offres, à gauche : type de page d'une offre.
 
 Pour des raisons de respect des droits d’auteur, nous utilisons des données générées avec dummy-json. Bien que fictives, ces données respectent la structure des services des services concurrents (voir [modèle de données](https://github.com/UTT-GL03/ReFood/blob/main/sample_data.hbs)).
+
