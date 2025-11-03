@@ -197,4 +197,9 @@ Bien que nous ayons suivi la maquette pour la conception des pages d'offres, la 
 Bien que nos estimations actuelles soient faussées à la baisse à cause des données statiques, elles restent comparables à celles de nos concurrents.
 Avec une moyenne concurrente de 1,95 g par page, notre objectif de rester sous 1,40 g représente déjà une amélioration significative.
 
+## Etape de prototypage : Données statiques chargées de manière dynamique
+
+La version 1.0.1 du prototype, bien qu'identique fonctionnellement, adopte un chargement de données plus réaliste. Les données sont toujours statiques mais sont désormais récupérées par le frontend via le réseau après l'affichage initial de la page, ce qui a eu pour effet d'ajouter 1 seul requête supplémentaire.
+
+Donc pour l'évaluation de ce scénario, les résultats sont globalement identiques à ceux du Tab.2, hormis le nombre de requêtes qui augmente donc de 1.
 
