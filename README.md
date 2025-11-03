@@ -58,10 +58,10 @@ Nous avons choisi de comparer l’impact des scénarios sur plusieurs services w
 
 Service           | Score (sur 100) | Classe    | Détail des mesures
 -----------------|----------------|-----------|-------------------
-Geev              | 59             | C 🟦      | [..](https://github.com/UTT-GL03/ReFood/blob/main/geev.md) 
-JeDonne.fr        | 33             | E 🟥      | [..](https://github.com/UTT-GL03/ReFood/blob/main/jedonne.md)
-Donnons.org       | 14             | F 🟪      | [..](https://github.com/UTT-GL03/ReFood/blob/main/donnons.md)
-ToutDonner.com    | 71             | B 🟩      | [..](https://github.com/UTT-GL03/ReFood/blob/main/toutdonner.md)
+Geev              | 59             | C 🟦      | [..](https://github.com/UTT-GL03/ReFood/blob/main/benchmark/geev.md) 
+JeDonne.fr        | 33             | E 🟥      | [..](https://github.com/UTT-GL03/ReFood/blob/main/benchmark/jedonne.md)
+Donnons.org       | 14             | F 🟪      | [..](https://github.com/UTT-GL03/ReFood/blob/main/benchmark/donnons.md)
+ToutDonner.com    | 71             | B 🟩      | [..](https://github.com/UTT-GL03/ReFood/blob/main/benchmark/toutdonner.md)
 
 *Tab.1 : Mesure de l'EcoIndex moyen des services web étudiés.*
 
@@ -145,4 +145,56 @@ Elle contient un titre, une description, une quantité, un type d’aliment, un 
 Fig.1: Maquette de l'interface du prototype - à droite : type de une du site avec des offres, à gauche : type de page d'une offre.
 
 Pour des raisons de respect des droits d’auteur, nous utilisons des données générées avec dummy-json. Bien que fictives, ces données respectent la structure des services des services concurrents (voir [modèle de données](https://github.com/UTT-GL03/ReFood/blob/main/sample_data.hbs)).
+---
+## Prototype n°1 : Fonctionnalités pour le scénario prioritaire avec données chargées de manière statique
+
+### Objectif 
+
+Ce premier prototype nous permet de répondre à notre scénario prioritaire : Consulter des offres de don de nourriture depuis la page d'accueil 
+Les données sont chargés de manière statique.
+
+### Page d'acceuil 
+
+La page d'accueil de notre prototype affiche actuellement des offres de dons alimentaires aléatoires, basées sur un jeu de données statiques.
+
+<img width="760" height="688" alt="image" src="https://github.com/user-attachments/assets/164f6508-e8bb-4aba-8a49-9eed899e1adb" />
+
+*Fig. 1 — Page d’accueil de Refood*
+
+Nous avons opté pour PicoCSS, un framework CSS minimaliste, en raison de sa faible empreinte, ce qui le rend idéal pour cette phase de test. 
+
+Nous avons fait le choix de ne pas intégrer de photos dans la page principale présentant les annonces. Même si les images peuvent renforcer l’attractivité des publications, elles ne sont pas essentielles à la consultation des informations clés (type de denrée, quantité, ville, statut, date limite). Leur absence permet ainsi de réduire considérablement le nombre de requêtes HTTP et la taille totale de la page, deux facteurs ayant un impact direct sur la consommation énergétique du chargement.
+
+Cependant nous pensons que des photo devrait être ajoutée ultérieurement, pour cela il serait nécessaire de pondérer son intérêt fonctionnel avec son impact environnemental, potentiellement élevé. En effet, sauf recours à des optimisations avancées (comme les sprites CSS ou le multiplexage HTTP/2), chaque image requiert un transfert de données supplémentaire.
+
+Dans l’état actuel du prototype, il est donc déjà possible d’obtenir une estimation représentative de l’impact environnemental du frontend. Bien que les données ne soient pas encore chargées dynamiquement, nous pouvons mesurer la consommation associée au rendu des données statiques et à la pile technique retenue (React, PicoCSS, DayJS).
+
+Mode | Ecoindex | GES (gCO2e) | taille du DOM | Requêtes | taille de la page (ko)
+|---|---|---|---|---|---
+| Développement | 74 B 🟠 | 1.61 | 359 | 29 | 1775
+| Pré-Production | 82 A 🟢 | 1.37 | 355 | 5 | 344 
+
+*Tab. 1 — Évaluation de l'impact du prototype de la page d'accueil.*
+
+### Pages des offres
+Les pages des offres ont pour HTTP-URI offre/{id}. 
+
+Bien que nous ayons suivi la maquette pour la conception des pages d'offres, la version actuelle est incomplète. Notamment, les photos ne sont pas encore intégrées, de même que de nombreuses fonctionnalités qui seront ajoutées ultérieurement.
+
+<img width="395" height="546" alt="image" src="https://github.com/user-attachments/assets/2a891ca5-033f-44c9-a80b-fc61dc423e5d" />
+
+*Fig. 2 — page d'une offre.*
+
+| Scénario | EcoIndex | GES (gCO2e) | Taille du DOM | Requêtes | Taille de la page (ko) |
+|---|---|---|---|---|---|
+| 1. Consulter la page des offres | 82 A 🟢 | 1.37 | 355 | 5 | 344 |
+| 2. Choisir une offre et la charger | 95 A 🟢 | 1.10 | 31 | 5 | 344 |
+| 3. Revenir à l'accueil et consulter à nouveau la page des offres | 82 A 🟢 | 1.37 | 355 | 5 | 344 |
+| 4. Choisir une nouvelle offre| 95 A 🟢 | 1.10 | 31 | 5 | 344 |
+
+*Tab.2: Évaluation de l'impact du scénario "Consulter des offres" dans le prototype n°1.*
+
+Bien que nos estimations actuelles soient faussées à la baisse à cause des données statiques, elles restent comparables à celles de nos concurrents.
+Avec une moyenne concurrente de 1,95 g par page, notre objectif de rester sous 1,40 g représente déjà une amélioration significative.
+
 
