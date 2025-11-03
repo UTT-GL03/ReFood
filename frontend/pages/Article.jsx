@@ -1,24 +1,35 @@
-import { useParams } from 'react-router-dom'
+import { useState, useEffect } from 'react'
+import { useParams, Link } from 'react-router-dom'
 import dayjs from 'dayjs'
 import localizedFormat from 'dayjs/plugin/localizedFormat'
 import 'dayjs/locale/fr'
-import data from '../assets/sample_data.json'
 
 dayjs.extend(localizedFormat)
 dayjs.locale('fr')
 
 function Article() {
   const { id } = useParams()
-  const offre = data.offres.find((x) => x.id === parseInt(id))
+  const [offre, setOffre] = useState(null)
 
-  if (!offre) {
-    return <p>Offre introuvable</p>
-  }
+  useEffect(() => {
+    fetch('/sample_data.json')
+      .then(res => res.json())
+      .then(data => {
+        const found = data.offres.find(x => x.id.toString() === id)
+        setOffre(found)
+      })
+      .catch(err => console.error("Erreur chargement article :", err))
+  }, [id])
+
+  if (!offre) return <p>Chargement de l'article...</p>
 
   return (
     <main className="container">
       <article className="offre">
         <header>
+          <Link to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
+            <h1>ReFood</h1>
+          </Link>
           <span className="tag">{offre.type}</span> — <span>{offre.etat}</span>
           <br />
           <time>Publié {dayjs(offre.date_publication).format('LLLL')}</time>

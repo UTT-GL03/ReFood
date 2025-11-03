@@ -23,7 +23,7 @@ function Offre({ titre, description, quantite, type, etat, ville, statut, date_p
   )
 }
 
-// 🔤 fonction utilitaire pour corriger les caractères mal encodés
+// fonction utilitaire pour corriger les caractères mal encodés
 function decodeHtml(str) {
   return str
     .replace(/├®/g, "é")
