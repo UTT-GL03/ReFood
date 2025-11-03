@@ -158,6 +158,7 @@ Les données sont chargés de manière statique.
 La page d'accueil de notre prototype affiche actuellement des offres de dons alimentaires aléatoires, basées sur un jeu de données statiques.
 
 <img width="760" height="688" alt="image" src="https://github.com/user-attachments/assets/164f6508-e8bb-4aba-8a49-9eed899e1adb" />
+
 *Fig. 1 — Page d’accueil de Refood*
 
 Nous avons opté pour PicoCSS, un framework CSS minimaliste, en raison de sa faible empreinte, ce qui le rend idéal pour cette phase de test. 
@@ -168,10 +169,10 @@ Cependant nous pensons que des photo devrait être ajoutée ultérieurement, pou
 
 Dans l’état actuel du prototype, il est donc déjà possible d’obtenir une estimation représentative de l’impact environnemental du frontend. Bien que les données ne soient pas encore chargées dynamiquement, nous pouvons mesurer la consommation associée au rendu des données statiques et à la pile technique retenue (React, PicoCSS, DayJS).
 
-Mode | Ecoindex | Ges | taille du DOM | Requêtes | taille de la page (ko)
-|---|---|---|---|---|---
-| Developpement |  |  |  |  | 
-| Pré-Production |  |  |  |  | 
+Mode | Ecoindex | Performance | Accessibilité | taille du DOM | Requêtes | taille de la page (ko)
+|---|---|---|---|---|---|---
+| Développement |  | 88 | 91 |  | 29 | 
+| Pré-Production |  |  |  |  |  | 
 
 *Tab. 1 — Évaluation de l'impact du prototype de la page d'accueil.*
 
