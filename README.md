@@ -169,10 +169,10 @@ Cependant nous pensons que des photo devrait être ajoutée ultérieurement, pou
 
 Dans l’état actuel du prototype, il est donc déjà possible d’obtenir une estimation représentative de l’impact environnemental du frontend. Bien que les données ne soient pas encore chargées dynamiquement, nous pouvons mesurer la consommation associée au rendu des données statiques et à la pile technique retenue (React, PicoCSS, DayJS).
 
-Mode | Ecoindex | Performance | Accessibilité | taille du DOM | Requêtes | taille de la page (ko)
-|---|---|---|---|---|---|---
-| Développement |  | 88 | 91 |  | 29 | 
-| Pré-Production |  |  |  |  |  | 
+Mode | Ecoindex | GES (gCO2e) | taille du DOM | Requêtes | taille de la page (ko)
+|---|---|---|---|---|---
+| Développement | 74 B 🟠 | 1.61 | 359 | 29 | 1775
+| Pré-Production | 82 A 🟢 | 1.37 | 355 | 5 | 344 
 
 *Tab. 1 — Évaluation de l'impact du prototype de la page d'accueil.*
 
@@ -185,5 +185,16 @@ Bien que nous ayons suivi la maquette pour la conception des pages d'offres, la 
 
 *Fig. 2 — page d'une offre.*
 
+| Scénario | EcoIndex | GES (gCO2e) | Taille du DOM | Requêtes | Taille de la page (ko) |
+|---|---|---|---|---|---|
+| 1. Consulter la page des offres | 82 A 🟢 | 1.37 | 355 | 5 | 344 |
+| 2. Choisir une offre et la charger | 95 A 🟢 | 1.10 | 31 | 5 | 344 |
+| 3. Revenir à l'accueil et consulter à nouveau la page des offres | 82 A 🟢 | 1.37 | 355 | 5 | 344 |
+| 4. Choisir une nouvelle offre| 95 A 🟢 | 1.10 | 31 | 5 | 344 |
+
+*Tab.2: Évaluation de l'impact du scénario "Consulter des offres" dans le prototype n°1.*
+
+Bien que nos estimations actuelles soient faussées à la baisse à cause des données statiques, elles restent comparables à celles de nos concurrents.
+Avec une moyenne concurrente de 1,95 g par page, notre objectif de rester sous 1,40 g représente déjà une amélioration significative.
 
 
