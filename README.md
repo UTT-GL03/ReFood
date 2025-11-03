@@ -58,10 +58,10 @@ Nous avons choisi de comparer l’impact des scénarios sur plusieurs services w
 
 Service           | Score (sur 100) | Classe    | Détail des mesures
 -----------------|----------------|-----------|-------------------
-Geev              | 59             | C 🟦      | [..](https://github.com/UTT-GL03/ReFood/blob/main/geev.md) 
-JeDonne.fr        | 33             | E 🟥      | [..](https://github.com/UTT-GL03/ReFood/blob/main/jedonne.md)
-Donnons.org       | 14             | F 🟪      | [..](https://github.com/UTT-GL03/ReFood/blob/main/donnons.md)
-ToutDonner.com    | 71             | B 🟩      | [..](https://github.com/UTT-GL03/ReFood/blob/main/toutdonner.md)
+Geev              | 59             | C 🟦      | [..](https://github.com/UTT-GL03/ReFood/blob/main/benchmark/geev.md) 
+JeDonne.fr        | 33             | E 🟥      | [..](https://github.com/UTT-GL03/ReFood/blob/main/benchmark/jedonne.md)
+Donnons.org       | 14             | F 🟪      | [..](https://github.com/UTT-GL03/ReFood/blob/main/benchmark/donnons.md)
+ToutDonner.com    | 71             | B 🟩      | [..](https://github.com/UTT-GL03/ReFood/blob/main/benchmark/toutdonner.md)
 
 *Tab.1 : Mesure de l'EcoIndex moyen des services web étudiés.*
 
