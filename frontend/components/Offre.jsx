@@ -14,7 +14,7 @@ function Offre({ titre, description, quantite, type, etat, ville, statut, date_p
         <time>publié {dayjs(date_publication).fromNow()}</time>
       </header>
       <h2>{decodeHtml(titre)}</h2>
-      <p>{description}</p>
+      <img src='\src\assets\default.png' alt='default'></img>
       <p><strong>Quantité :</strong> {quantite}</p>
       <p><strong>Ville :</strong> {ville}</p>
       <p><strong>Statut :</strong> {statut}</p>

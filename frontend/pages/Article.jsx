@@ -24,24 +24,29 @@ function Article() {
   if (!offre) return <p>Chargement de l'article...</p>
 
   return (
-    <main className="container">
-      <article className="offre">
-        <header>
+      <>
+        <header style={{ padding: '12px 0' }}>
+          <button onClick={() => window.history.back()} aria-label="Retour" style={{ marginRight: 12, cursor: 'pointer' }}>← Retour</button>
           <Link to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
-            <h1>ReFood</h1>
           </Link>
-          <span className="tag">{offre.type}</span> — <span>{offre.etat}</span>
-          <br />
-          <time>Publié {dayjs(offre.date_publication).format('LLLL')}</time>
         </header>
+        <main className="container">
+          <article className="offre">
+            <header>
+              <span className="tag">{offre.type}</span> — <span>{offre.etat}</span>
+              <br />
+              <time>Publié {dayjs(offre.date_publication).format('LLLL')}</time>
+            </header>
         <h2>{offre.titre}</h2>
         <p>{offre.description}</p>
+        <img src='\src\assets\default.png' alt='default'></img>
         <p><strong>Quantité :</strong> {offre.quantite}</p>
         <p><strong>Ville :</strong> {offre.ville}</p>
         <p><strong>Statut :</strong> {offre.statut}</p>
         <p><small>Date limite : {offre.date_limite}</small></p>
       </article>
     </main>
+      </>
   )
 }
 

@@ -6,7 +6,8 @@
 }
 
 body {
-  background-color: springgreen;
+background: linear-gradient(135deg, #74E39A, #38A169);
+
 }
 
 .logo {
@@ -31,7 +32,7 @@ body {
 
 
 .offre {
-  border: 1px solid #ddd;
+  border: none;
   border-radius: 12px;
   padding: 1rem;
   background-color: #fafafa;
