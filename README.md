@@ -203,3 +203,12 @@ La version 1.0.1 du prototype, bien qu'identique fonctionnellement, adopte un ch
 
 Donc pour l'évaluation de ce scénario, les résultats sont globalement identiques à ceux du Tab.2, hormis le nombre de requêtes qui augmente donc de 1.
 
+## Mesures de la consommation énergétique lors du passage à l'échelle
+
+Maintenant que notre prototype est réaliste en termes de nombre de requêtes, nous pouvons simuler les effets du "passage à l'échelle".
+
+Sur une plateforme de dons alimentaires comme ReFood, plusieurs types de données s’accumulent naturellement avec le temps. Le volume principal provient des offres créées par les utilisateurs. Chaque offre comprend des informations textuelles (titre, description, catégorie, dates, utilisateur) et souvent une image. Même après que l’offre soit récupérée ou annulée, elle reste dans l’historique pour permettre l’analyse des tendances, le suivi des dons passés et l’optimisation des futures offres.
+
+Si on se base sur une moyenne de 40 nouvelles offres par jour, on peut estimer une croissance comme environ 7300 offres après 6 mois dans notre base de données.
+
+Les utilisateurs constituent un autre type de données qui croît régulièrement au fil du temps. En supposant qu’environ 30 nouveaux utilisateurs s’inscrivent chaque mois, on obtient 360 nouveaux utilisateurs par an.
