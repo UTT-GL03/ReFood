@@ -15,9 +15,12 @@ function Home() {
   return (
     <main className="container">
       {offres.map((offre) => (
-        <Link key={offre.id} to={`/offre/${offre.id}`}>
-          <Offre {...offre} />
-        </Link>
+        <article key={offre.id} className="offre">
+          {/* Lien interne vers la page détail */}
+          <a href={`/offre/${offre.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+            <Offre {...offre} />
+          </a>
+        </article>
       ))}
     </main>
   )
