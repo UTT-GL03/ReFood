@@ -35,7 +35,7 @@ function Article() {
             <header>
               <span className="tag">{offre.type}</span> — <span>{offre.etat}</span>
               <br />
-              <time>Publié {dayjs(offre.date_publication).format('LLLL')}</time>
+              <time>Publié {dayjs(offre.date_publication).format('LL')}</time>
             </header>
         <h2>{offre.titre}</h2>
         <p>{offre.description}</p>
