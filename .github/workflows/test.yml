@@ -27,16 +27,33 @@ jobs:
         run: |
           npm run build
 
-      - name: Start nginx (docker-compose)
+      - name: Start frontend
         run: |
           # docker compose expects to be run from repo root where docker-compose.yml is located
           docker compose up --detach
+
+      - name: Install GreenIT Analysis CLI
+        run: |
+          wget https://github.com/cnumr/GreenIT-Analysis-cli/archive/refs/heads/master.zip
+          unzip master.zip
+          cd GreenIT-Analysis-cli-master
+          npm install
+          npm link
 
       - name: Wait for frontend (HTTP 200)
         uses: docker://benel/wait-for-response:1
         with:
           # explicit port 80 — the compose file maps host:80 -> container:80
           args: http://localhost:80/ 200 30000 500
+
+      - name: Run GreenIT Analysis CLI
+        run: |
+          greenit analyse --format html --ci scenarios/read_offers.yml
+      - name: Save results
+        uses: actions/upload-artifact@v4
+        with:
+          name: EcoIndex
+          path: Consulterlesoffres.html
 
       - name: Smoke test — fetch index
         run: |
