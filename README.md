@@ -190,7 +190,7 @@ Bien que nous ayons suivi la maquette pour la conception des pages d'offres, la 
 | 1. Consulter la page des offres | 82 A 🟢 | 1.37 | 355 | 5 | 344 |
 | 2. Choisir une offre et la charger | 95 A 🟢 | 1.10 | 31 | 5 | 344 |
 | 3. Revenir à l'accueil et consulter à nouveau la page des offres | 82 A 🟢 | 1.37 | 355 | 5 | 344 |
-| 4. Choisir une nouvelle offre| 95 A 🟢 | 1.10 | 31 | 5 | 344 |
+| 4. Choisir une nouvelle offre | 95 A 🟢 | 1.10 | 31 | 5 | 344 |
 
 *Tab.2: Évaluation de l'impact du scénario "Consulter des offres" dans le prototype n°1.*
 
@@ -212,3 +212,17 @@ Sur une plateforme de dons alimentaires comme ReFood, plusieurs types de donnée
 Si on se base sur une moyenne de 40 nouvelles offres par jour, on peut estimer une croissance comme environ 7300 offres après 6 mois dans notre base de données.
 
 Les utilisateurs constituent un autre type de données qui croît régulièrement au fil du temps. En supposant qu’environ 30 nouveaux utilisateurs s’inscrivent chaque mois, on obtient 360 nouveaux utilisateurs par an.
+
+---
+## Evolution de l'Ecoindex lors du passage à l'échelle 
+
+Les mesures utilisées pour calculer l’EcoIndex sont désormais générées automatiquement dans le cadre du processus d’intégration continue.
+
+| Scénario | EcoIndex | GES (gCO2e) | Taille du DOM | Requêtes | Taille de la page (ko) |
+|---|---|---|---|---|---|
+| 1. Consulter la page des offres | <del>82 A 🟢</del> | <del>1.37</del> | <del>355</del> | <del>5</del> | <del>344</del> |
+| 2. Choisir une offre et la charger | <del>95 A 🟢</del> | <del>1.10</del> | <del>31</del> | <del>5</del> | <del>344</del> |
+| 3. Revenir à l'accueil et consulter à nouveau la page des offres | <del>82 A 🟢</del> | <del>1.37</del> | <del>355</del> | <del>5</del> | <del>344</del> |
+| 4. Choisir une nouvelle offre | <del>95 A 🟢</del> | <del>1.10</del> | <del>31</del> | <del>5</del> | <del>344</del> |
+
+
