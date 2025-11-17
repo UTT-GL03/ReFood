@@ -220,9 +220,9 @@ Les mesures utilisées pour calculer l’EcoIndex sont désormais générées au
 
 | Scénario | EcoIndex | GES (gCO2e) | Taille du DOM | Requêtes | Taille de la page (ko) |
 |---|---|---|---|---|---|
-| 1. Consulter la page des offres | <del>82 A 🟢</del>39 E 🔴 | <del>1.37</del>2.20 | <del>355</del>54015 | <del>5</del>7 | <del>344</del>1882 |
-| 2. Choisir une offre et la charger | <del>95 A 🟢</del>86 A 🟢 | <del>1.10</del>1.13 | <del>31</del>35 | <del>5</del>6 | <del>344</del>1881 |
-| 3. Revenir à l'accueil et consulter à nouveau la page des offres | <del>82 A 🟢</del>52 D 🟡 | <del>1.37</del>1.95 | <del>355</del>54015 | <del>5</del>0 | <del>344</del>0 |
-| 4. Choisir une nouvelle offre | <del>95 A 🟢</del>94 A 🟢| <del>1.10</del>1.13 | <del>31</del>35 | <del>5</del>6 | <del>344</del>0 |
+| 1. Consulter la page des offres | <del>82 A 🟢</del> 39 E 🔴 | <del>1.37</del> 2.20 | <del>355</del> 54015 | <del>5</del> 7 | <del>344</del> 1882 |
+| 2. Choisir une offre et la charger | <del>95 A 🟢</del> 86 A 🟢 | <del>1.10</del> 1.13 | <del>31</del> 35 | <del>5</del> 6 | <del>344</del> 1881 |
+| 3. Revenir à l'accueil et consulter à nouveau la page des offres | <del>82 A 🟢</del> 52 D 🟡 | <del>1.37</del> 1.95 | <del>355</del> 54015 | <del>5</del> 0 | <del>344</del> 0 |
+| 4. Choisir une nouvelle offre | <del>95 A 🟢</del> 94 A 🟢| <del>1.10</del> 1.13 | <del>31</del> 35 | <del>5</del> 6 | <del>344</del> 0 |
 
 La baisse de l’EcoIndex est nettement plus marquée pour la page listant les offres que pour la page d’une offre. Cela s’explique par la nature même de l’EcoIndex, qui évalue l’impact environnemental global d’une page, plus une page contient d’éléments, plus cette part augmente.
