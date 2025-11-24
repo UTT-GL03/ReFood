@@ -1,36 +1,17 @@
 {
-  "utilisateurs": [
+  "docs": [
     {{#repeat 1000}}
     {
-      "id": {{@index}},
+      "_id": "user-{{@index}}",
       "pseudo": "{{firstName}} {{lastName}}",
-      "note": {{float 3.0 5.0 1}}
+      "note": {{float 3.0 5.0 1}},
+      "type_user": "user"
     }
-    {{/repeat}}
-  ],
+    {{/repeat}},
 
-  "categories": [
-    {{#repeat min=5 max=8}}
-    {
-      "nom": "{{random 'Fruits' 'Légumes' 'Pains' 'Produits laitiers' 'Plats cuisinés'}}",
-      "description": "{{lorem 4}}"
-    }
-    {{/repeat}}
-  ],
-
-  "villes": [
-    {{#repeat min=5 max=10}}
-    {
-      "nom": "{{city}}",
-      "code_postal": "{{int 10000 99999}}"
-    }
-    {{/repeat}}
-  ],
-
-  "offres": [
-    {{#repeat 3000}}
-    {
-      "id": {{@index}},
+  {{#repeat 3000}}
+  {
+    "_id": "offer-{{@index}}",
       "titre": "{{random 'pommes' 'pains' 'salade'}}",
       "description": "{{lorem 20}}",
       "quantite": "{{int 1 10}}",

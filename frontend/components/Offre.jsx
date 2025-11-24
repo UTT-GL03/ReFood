@@ -9,11 +9,11 @@ function Offre({ titre, description, quantite, type, etat, ville, statut, date_p
   return (
     <article className="offre">
       <header>
-        <span className="tag">{decodeHtml(type)}</span> — <span>{etat}</span>
+        <span className="tag"></span> {type} <span>{etat}</span>
         <br />
         <time>publié {dayjs(date_publication).fromNow()}</time>
       </header>
-      <h2>{decodeHtml(titre)}</h2>
+      <h2>{titre}</h2>
       <img src='\src\assets\default.png' alt='default'></img>
       <p><strong>Quantité :</strong> {quantite}</p>
       <p><strong>Ville :</strong> {ville}</p>
@@ -21,18 +21,6 @@ function Offre({ titre, description, quantite, type, etat, ville, statut, date_p
       <p><small>Date limite : {date_limite}</small></p>
     </article>
   )
-}
-
-// fonction utilitaire pour corriger les caractères mal encodés
-function decodeHtml(str) {
-  return str
-    .replace(/├®/g, "é")
-    .replace(/├à/g, "à")
-    .replace(/├¿/g, "ç")
-    .replace(/├ª/g, "ê")
-    .replace(/â/g, "à")
-    .replace(/Ô/g, "ô")
-    .replace(/├ï/g, "ï")
 }
 
 export default Offre

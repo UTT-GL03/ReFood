@@ -11,11 +11,11 @@ function Article() {
   const { id } = useParams()
   const [offre, setOffre] = useState(null)
 
-  useEffect(() => {
+useEffect(() => {
     fetch('/sample_data.json')
       .then(res => res.json())
       .then(data => {
-        const found = data.offres.find(x => x.id.toString() === id)
+        const found = data.docs.find(x => x._id === id)
         setOffre(found)
       })
       .catch(err => console.error("Erreur chargement article :", err))

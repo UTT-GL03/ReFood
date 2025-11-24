@@ -22,14 +22,26 @@ jobs:
           # use npm ci for reproducible installs if lockfile exists
           npm ci
 
-      - name: Generate sample
-        run: |
-          npx --yes dummy-json sample_data.hbs > frontend/public/sample_data.json
-
       - name: Build frontend
         working-directory: frontend
         run: |
           npm run build
+
+  build_samples:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download sources
+        uses: actions/checkout@v5
+
+      - name: Generate sample
+        run: |
+          npx --yes dummy-json sample_data.hbs > sample_data.json
+
+      - name: Save samples for later
+        uses: actions/upload-artifact@v4
+        with:
+          name: samples
+          path: sample_data.json
 
       - name: Start frontend
         run: |
@@ -53,6 +65,7 @@ jobs:
       - name: Run GreenIT Analysis CLI
         run: |
           greenit analyse --format html --ci scenarios/read_offers.yml
+
       - name: Save results
         uses: actions/upload-artifact@v4
         with:
