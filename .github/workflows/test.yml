@@ -35,7 +35,7 @@ jobs:
 
       - name: Generate sample
         run: |
-          npx --yes dummy-json ./sample_data.hbs > sample_data.json
+          npx --yes dummy-json ./frontend/sample_data.hbs > sample_data.json
 
       - name: Save samples for later
         uses: actions/upload-artifact@v4
