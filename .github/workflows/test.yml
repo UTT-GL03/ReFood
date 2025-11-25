@@ -55,18 +55,16 @@ jobs:
           cd GreenIT-Analysis-cli-master
           npm install
           npm link
-
-      - name: Wait for frontend to boot
+          
+      - name: Check running containers
         run: |
-          for i in {1..60}; do
-            curl -f http://localhost/ && break
-            echo "Waiting for frontend..."
-            sleep 1
-          done
+          docker ps -a
+          docker logs $(docker ps -q -f name=static_hosting)
 
-      
-
-      
+      - name: Wait for frontend (HTTP 200)
+        uses: docker://benel/wait-for-response:1
+        with:
+          args: http://localhost/ 200 30000 500
 
       - name: Run GreenIT Analysis CLI
         run: |
