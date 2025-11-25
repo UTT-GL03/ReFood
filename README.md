@@ -227,3 +227,13 @@ Les mesures utilisées pour calculer l’EcoIndex sont désormais générées au
 
 
 La baisse de l’EcoIndex est nettement plus marquée pour la page listant les offres que pour la page d’une offre. Cela s’explique par la nature même de l’EcoIndex, qui évalue l’impact environnemental global d’une page, plus une page contient d’éléments, plus cette part augmente.
+
+## Mesure de la consommation énergétique liée à la consultation
+
+Nous pouvons utiliser l'utilitaire GreenFrame qui permet de calculer et d'estimer la consommation energétique de notre service sur la base de plusieurs composants comme:
+
+- du CPU (à partir du temps de calcul),
+- de la mémoire vive (à partir de la taille des données mémorisées),
+- du disque (à partir de la taille des données lues et écrites),
+- du réseau (à partir de la taille des données reçues et envoyées),
+- pour le navigateur uniquement, de l'écran (à partir du temps d'exécution du scénario).
