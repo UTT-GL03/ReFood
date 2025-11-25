@@ -1,0 +1,9 @@
+baseURL: http://localhost
+projectName: QVOTIDIE
+scenarios:
+  - name: Consulter la page d'index
+    path: ./scenarios/consulter_index.js
+  - name: Consulter une offre
+    path: ./scenarios/consulter_offre.js
+containers:
+  - refood-static_hosting-1
