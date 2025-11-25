@@ -62,19 +62,9 @@ jobs:
           docker logs $(docker ps -q -f name=static_hosting)
 
       - name: Wait for frontend (HTTP 200)
-        run: |
-          echo "Waiting for frontend to be ready on http://localhost:80..."
-          for i in {1..60}; do
-            if curl -f -s -o /dev/null http://localhost:80/; then
-              echo "✓ Frontend is ready!"
-              exit 0
-            fi
-            echo "Attempt $i/60 - waiting 500ms..."
-            sleep 0.5
-          done
-          echo "✗ Frontend failed to start after 30 seconds"
-          docker logs refood-static_hosting-1
-          exit 1
+        uses: docker://benel/wait-for-response:1
+        with:
+          args: http://localhost/ 200 30000 500
 
       - name: Run GreenIT Analysis CLI
         run: |
