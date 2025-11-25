@@ -12,8 +12,8 @@ services:
       ports:
         - 5984:5984
       environment:
-        - COUCHDB_USER
-        - COUCHDB_PASSWORD
+        - COUCHDB_USER=refooduser
+        - COUCHDB_PASSWORD=refoodmdp
   accessible_backend:
     image: curlimages/curl
     entrypoint: ["/bin/sh","-c"]

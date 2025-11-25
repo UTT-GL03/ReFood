@@ -47,10 +47,7 @@ jobs:
         run: |
           # docker compose expects to be run from repo root where docker-compose.yml is located
           docker compose up --detach
-
-      - name: Wait for frontend to boot
-        run: sleep 10
-
+          
       - name: Install GreenIT Analysis CLI
         run: |
           wget https://github.com/cnumr/GreenIT-Analysis-cli/archive/refs/heads/master.zip
@@ -62,7 +59,7 @@ jobs:
       - name: Wait for frontend (HTTP 200)
         uses: docker://benel/wait-for-response:1
         with:
-          args: http://localhost:80/ 200 30000 500
+          args: http://localhost 200 30000 500
 
       - name: Run GreenIT Analysis CLI
         run: |
