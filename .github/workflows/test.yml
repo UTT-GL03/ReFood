@@ -79,6 +79,22 @@ jobs:
       - name: Show docker logs
         run: docker compose logs --no-color
 
+      - name: Wait for CouchDB
+        run: |
+          for i in {1..30}; do
+            curl -s http://localhost:5984/ && break
+            echo "Waiting for CouchDB..."
+            sleep 2
+          done
+
+      - name: Import sample data into CouchDB
+        run: |
+          echo "Importing sample data..."
+          curl -X PUT http://refooduser:refoodmdp@localhost:5984/refood_db || true
+          curl -X POST http://refooduser:refoodmdp@localhost:5984/refood_db/_bulk_docs \
+            -H "Content-Type: application/json" \
+            --data-binary @sample_data.json
+
 
       - name: Install GreenIT Analysis CLI
         run: |
