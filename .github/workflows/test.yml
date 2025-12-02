@@ -27,6 +27,13 @@ jobs:
         run: |
           npm run build
 
+      - name: Save frontend build
+        uses: actions/upload-artifact@v4
+        with:
+          name: frontend-build
+          path: frontend/dist
+
+
   build_samples:
     runs-on: ubuntu-latest
     steps:
@@ -46,6 +53,12 @@ jobs:
           echo "Show root docker-compose file if present:"
           ls -la docker-compose.yml || ls -la docker-compose.yaml || true
 
+      - name: Download frontend build
+        uses: actions/download-artifact@v4
+        with:
+          name: frontend-build
+          path: frontend/dist
+
       - name: Generate sample
         run: |
           npx --yes dummy-json ./frontend/sample_data.hbs > sample_data.json
@@ -61,6 +74,10 @@ jobs:
           # docker compose expects to be run from repo root where docker-compose.yml is located
           docker compose up --detach
         # continue even if this step fails? we keep the default (fail) to see issues early
+
+      - name: Show docker logs
+        run: docker compose logs --no-color
+
 
       - name: Install GreenIT Analysis CLI
         run: |
