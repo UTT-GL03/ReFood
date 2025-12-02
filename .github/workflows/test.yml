@@ -35,6 +35,7 @@ jobs:
 
 
   build_samples:
+    needs: build
     runs-on: ubuntu-latest
     steps:
       - name: Download sources
