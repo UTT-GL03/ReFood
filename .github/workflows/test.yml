@@ -62,7 +62,26 @@ jobs:
 
       - name: Generate sample
         run: |
-          npx --yes dummy-json ./frontend/sample_data.hbs > sample_data.json
+          npx --yes dummy-json ./frontend/sample_data.hbs > sample_data_raw.json
+
+      - name: Validate and extract docs array
+        run: |
+          echo "=== Raw sample data (first 500 chars) ==="
+          head -c 500 sample_data_raw.json
+          echo ""
+          echo ""
+          echo "=== Processing JSON to extract 'docs' array ==="
+          # Extract the 'docs' array and prepare for _bulk_docs (which expects just the array)
+          node -e "
+            const fs = require('fs');
+            const data = JSON.parse(fs.readFileSync('sample_data_raw.json', 'utf8'));
+            const docs = data.docs || data;
+            fs.writeFileSync('sample_data.json', JSON.stringify(docs, null, 2), 'utf8');
+            console.log('Extracted docs count:', docs.length);
+          "
+          echo "=== Processed sample data (first 500 chars) ==="
+          head -c 500 sample_data.json
+          echo ""
 
       - name: Save samples for later
         uses: actions/upload-artifact@v4
@@ -87,13 +106,30 @@ jobs:
             sleep 2
           done
 
+      - name: Create CouchDB database
+        run: |
+          curl -X PUT http://refooduser:refoodmdp@localhost:5984/refood_db -w "\nStatus: %{http_code}\n"
+
       - name: Import sample data into CouchDB
         run: |
           echo "Importing sample data..."
-          curl -X PUT http://refooduser:refoodmdp@localhost:5984/refood_db || true
+          echo "=== Sample data JSON structure ==="
+          head -c 300 sample_data.json
+          echo ""
+          echo ""
+          echo "=== Uploading to CouchDB ==="
           curl -X POST http://refooduser:refoodmdp@localhost:5984/refood_db/_bulk_docs \
-            -H "Content-Type: application/json" \
-            --data-binary @sample_data.json
+            -H "Content-Type: application/json; charset=utf-8" \
+            -d @sample_data.json \
+            -w "\nStatus: %{http_code}\n"
+
+      - name: Verify CouchDB data
+        run: |
+          echo "=== Checking CouchDB database ==="
+          curl -s http://refooduser:refoodmdp@localhost:5984/refood_db | jq '.' || echo "Failed to query DB"
+          echo ""
+          echo "=== Checking document count ==="
+          curl -s http://refooduser:refoodmdp@localhost:5984/refood_db | jq '.doc_count' || echo "Could not get doc_count"
 
 
       - name: Install GreenIT Analysis CLI
