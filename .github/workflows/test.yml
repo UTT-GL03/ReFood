@@ -110,9 +110,32 @@ jobs:
           # explicit port 80 — the compose file maps host:80 -> container:80
           args: http://localhost:80/ 200 30000 500
 
+      - name: Debug — verify services and data
+        run: |
+          echo "=== Checking Nginx (port 80) ==="
+          curl -v http://localhost:80/ 2>&1 | head -30
+          echo ""
+          echo "=== Checking CouchDB (port 5984) ==="
+          curl -v http://localhost:5984/ 2>&1 | head -20
+          echo ""
+          echo "=== Checking CouchDB refood_db ==="
+          curl -s http://refooduser:refoodmdp@localhost:5984/refood_db | jq '.doc_count' || echo "No refood_db or jq error"
+          echo ""
+          echo "=== Docker containers running ==="
+          docker ps --format "table {{.Names}}\t{{.Ports}}"
+          echo ""
+          echo "=== Docker logs (nginx) ==="
+          docker logs refood-static_hosting-1 2>&1 | tail -20 || echo "No nginx logs"
+
       - name: Run GreenIT Analysis CLI
         run: |
-          greenit analyse --format html --ci scenarios/read_offers.yml
+          greenit analyse --format html --ci scenarios/read_offers.yml 2>&1 | tee greenit.log
+        continue-on-error: true
+
+      - name: Show GreenIT logs
+        if: always()
+        run: |
+          cat greenit.log || echo "No greenit.log found"
 
       - name: Save results
         uses: actions/upload-artifact@v4

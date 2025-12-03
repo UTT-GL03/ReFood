@@ -4,6 +4,10 @@
   waitForSelector: .offre        # On attend que les offres soient chargées
 
   actions:
+    - name: Attendre le chargement complet des offres
+      type: wait
+      timeout: 10000             # Attendre jusqu'à 10s pour que les offres se chargent (API/CouchDB)
+
     - name: Ouvrir la première offre
       type: click
       element: .offre:nth-child(1) a
