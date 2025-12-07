@@ -111,6 +111,9 @@ jobs:
           name: frontend-build
           path: frontend/dist
 
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
       - name: Install GreenIT Analysis CLI
         run: |
           wget https://github.com/cnumr/GreenIT-Analysis-cli/archive/refs/heads/master.zip -O master.zip
