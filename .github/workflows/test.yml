@@ -37,65 +37,65 @@ jobs:
 
 
   build_samples:
-  runs-on: ubuntu-latest
-  steps:
-    - name: Download sources
-      uses: actions/checkout@v4
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download sources
+        uses: actions/checkout@v4
 
-    - name: Set up NodeJS (needed for npx / npm)
-      uses: actions/setup-node@v4
-      with:
-        node-version: 20
+      - name: Set up NodeJS (needed for npx / npm)
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
 
-    - name: Generate sample
-      run: |
-        npx --yes dummy-json ./frontend/sample_data.hbs > sample_data.json
+      - name: Generate sample
+        run: |
+          npx --yes dummy-json ./frontend/sample_data.hbs > sample_data.json
 
-    - name: Save samples for later
-      uses: actions/upload-artifact@v4
-      with:
-        name: samples
-        path: sample_data.json
+      - name: Save samples for later
+        uses: actions/upload-artifact@v4
+        with:
+          name: samples
+          path: sample_data.json
 
-    - name: Start CouchDB (docker compose)
-      run: |
-        docker compose up --detach couchdb  # démarrer seulement le service CouchDB si possible
+      - name: Start CouchDB (docker compose)
+        run: |
+          docker compose up --detach couchdb  # démarrer seulement le service CouchDB si possible
 
-    - name: Wait for CouchDB
-      run: |
-        for i in {1..30}; do
-          curl -s http://localhost:5984/ && break
-          echo "Waiting for CouchDB..."
-          sleep 2
-        done
+      - name: Wait for CouchDB
+        run: |
+          for i in {1..30}; do
+            curl -s http://localhost:5984/ && break
+            echo "Waiting for CouchDB..."
+            sleep 2
+          done
 
-    - name: Create CouchDB database
-      run: |
-        curl -X PUT http://refooduser:refoodmdp@localhost:5984/refood_db -w "\nStatus: %{http_code}\n"
+      - name: Create CouchDB database
+        run: |
+          curl -X PUT http://refooduser:refoodmdp@localhost:5984/refood_db -w "\nStatus: %{http_code}\n"
 
-    - name: Import sample data into CouchDB
-      run: |
-        echo "Importing sample data..."
-        echo "=== Sample data JSON structure ==="
-        head -c 300 sample_data.json
-        echo ""
-        echo "=== Uploading to CouchDB ==="
-        curl -X POST http://refooduser:refoodmdp@localhost:5984/refood_db/_bulk_docs \
-          -H "Content-Type: application/json; charset=utf-8" \
-          -d @sample_data.json \
-          -w "\nStatus: %{http_code}\n"
+      - name: Import sample data into CouchDB
+        run: |
+          echo "Importing sample data..."
+          echo "=== Sample data JSON structure ==="
+          head -c 300 sample_data.json
+          echo ""
+          echo "=== Uploading to CouchDB ==="
+          curl -X POST http://refooduser:refoodmdp@localhost:5984/refood_db/_bulk_docs \
+            -H "Content-Type: application/json; charset=utf-8" \
+            -d @sample_data.json \
+            -w "\nStatus: %{http_code}\n"
 
-    - name: Verify CouchDB data
-      run: |
-        echo "=== Checking CouchDB database ==="
-        curl -s http://refooduser:refoodmdp@localhost:5984/refood_db | jq '.' || echo "Failed to query DB"
-        echo ""
-        echo "=== Checking document count ==="
-        curl -s http://refooduser:refoodmdp@localhost:5984/refood_db | jq '.doc_count' || echo "Could not get doc_count"
+      - name: Verify CouchDB data
+        run: |
+          echo "=== Checking CouchDB database ==="
+          curl -s http://refooduser:refoodmdp@localhost:5984/refood_db | jq '.' || echo "Failed to query DB"
+          echo ""
+          echo "=== Checking document count ==="
+          curl -s http://refooduser:refoodmdp@localhost:5984/refood_db | jq '.doc_count' || echo "Could not get doc_count"
 
-    - name: Teardown CouchDB
-      if: always()
-      run: docker compose down --volumes --remove-orphans || true
+      - name: Teardown CouchDB
+        if: always()
+        run: docker compose down --volumes --remove-orphans || true
 
 
   measure_ecoindex:
