@@ -120,12 +120,6 @@ jobs:
           npm install
           npm link
 
-      - name: Wait for frontend (HTTP 200)
-        uses: docker://benel/wait-for-response:1
-        with:
-          # explicit port 80 — the compose file maps host:80 -> container:80
-          args: http://localhost:80/ 200 30000 500
-
       - name: Run GreenIT Analysis CLI
         run: |
           greenit analyse --format html --ci scenarios/read_offers.yml 2>&1 | tee greenit.log
@@ -140,11 +134,6 @@ jobs:
       - name: Smoke test — fetch index
         run: |
           curl --fail --silent --show-error http://localhost:80/
-
-      - name: Teardown docker-compose
-        if: always()
-        run: |
-          docker compose down --volumes --remove-orphans || true
 
 
   measure_energy_consumption:
