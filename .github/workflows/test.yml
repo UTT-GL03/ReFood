@@ -149,10 +149,6 @@ jobs:
           greenit analyse --format html --ci scenarios/read_offers.yml 2>&1 | tee greenit.log
         continue-on-error: true
 
-      - name: Show GreenIT logs
-        if: always()
-        run: |
-          cat greenit.log || echo "No greenit.log found"
 
       - name: Save results
         uses: actions/upload-artifact@v4
@@ -163,6 +159,41 @@ jobs:
       - name: Smoke test — fetch index
         run: |
           curl --fail --silent --show-error http://localhost:80/
+
+      - name: Teardown docker-compose
+        if: always()
+        run: |
+          docker compose down --volumes --remove-orphans || true
+
+  measure_energy_consumption:
+    needs: build_samples
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download sources
+        uses: actions/checkout@v4
+
+      - name: Start frontend (docker compose)
+        run: |
+          docker compose up --detach
+
+      - name: Install GreenFrame CLI
+        run: |
+          wget https://github.com/benel/greenframe-cli/archive/refs/heads/post-app.zip -O post-app.zip
+          unzip post-app.zip
+          cd greenframe-cli-post-app
+          npm install -g corepack
+          yarn
+          yarn build
+
+      - name: Run GreenFrame CLI
+        run: |
+          ./greenframe-cli-post-app/bin/run analyze > Consumption.txt
+
+      - name: Save results
+        uses: actions/upload-artifact@v4
+        with:
+          name: Consumption
+          path: Consumption.txt
 
       - name: Teardown docker-compose
         if: always()
