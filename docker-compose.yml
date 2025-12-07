@@ -8,12 +8,13 @@ services:
     ports:
       - 80:80
   backend:
-      image: couchdb:3
-      ports:
-        - 5984:5984
-      environment:
-        - COUCHDB_USER=refooduser
-        - COUCHDB_PASSWORD=refoodmdp
+    image: couchdb:3
+    ports:
+      - 5984:5984
+    environment:
+      - COUCHDB_USER=refooduser
+      - COUCHDB_PASSWORD=refoodmdp
+      
   accessible_backend:
     image: curlimages/curl
     entrypoint: ["/bin/sh","-c"]

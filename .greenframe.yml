@@ -7,3 +7,4 @@ scenarios:
     path: ./scenarios/consulter_offre.js
 containers:
   - refood-static_hosting-1
+  - refood-backend-1
