@@ -111,6 +111,9 @@ jobs:
           cd GreenIT-Analysis-cli-master
           npm install
           npm link
+      - name: Debug — list scenarios folder
+        run: ls -R
+
 
       - name: Run GreenIT Analysis CLI
         run: |

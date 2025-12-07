@@ -1,3 +1,5 @@
+version: '3.9'
+
 services:
 
   static_hosting:
@@ -6,24 +8,41 @@ services:
       - ./frontend/dist:/usr/share/nginx/html:ro
       - ./settings/nginx.conf:/etc/nginx/conf.d/default.conf:ro
     ports:
-      - 80:80
+      - "80:80"
+
   backend:
     image: couchdb:3
     ports:
-      - 5984:5984
+      - "5984:5984"
     environment:
-      - COUCHDB_USER=refooduser
-      - COUCHDB_PASSWORD=refoodmdp
-      
+      - COUCHDB_USER
+      - COUCHDB_PASSWORD
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5984/_up"]
+      interval: 5s
+      retries: 30
+      start_period: 5s
+
   accessible_backend:
     image: curlimages/curl
     entrypoint: ["/bin/sh","-c"]
-    command:
-      - |
-        alias put="curl -X PUT -u '${COUCHDB_USER}:${COUCHDB_PASSWORD}'"
-        put backend:5984/_node/nonode@nohost/_config/chttpd/enable_cors --data '"true"'
-        put backend:5984/_node/nonode@nohost/_config/cors/origins --data '"*"'
-        put backend:5984/refood_db
-        put backend:5984/refood_db/_security --data '{"members":{"roles":[]},"admins":{"roles":["_admin"]}}'
+    command: |
+      # retry loop pour attendre CouchDB
+      for i in $(seq 1 30); do
+        curl -s http://backend:5984/ && break
+        echo "Waiting for CouchDB..."
+        sleep 2
+      done
 
-  
+      # alias curl avec user/password
+      alias put="curl -X PUT -u '${COUCHDB_USER}:${COUCHDB_PASSWORD}'"
+
+      # config CouchDB
+      put backend:5984/_node/nonode@nohost/_config/chttpd/enable_cors --data '"true"'
+      put backend:5984/_node/nonode@nohost/_config/cors/origins --data '"*"'
+      put backend:5984/refood_db
+      put backend:5984/refood_db/_security --data '{"members":{"roles":[]},"admins":{"roles":["_admin"]}}'
+
+    depends_on:
+      backend:
+        condition: service_healthy
