@@ -104,6 +104,13 @@ jobs:
       - build
     runs-on: ubuntu-latest
     steps:
+
+      - name: Download frontend dist
+        uses: actions/download-artifact@v4
+        with:
+          name: frontend-build
+          path: frontend/dist
+
       - name: Install GreenIT Analysis CLI
         run: |
           wget https://github.com/cnumr/GreenIT-Analysis-cli/archive/refs/heads/master.zip -O master.zip
@@ -111,9 +118,9 @@ jobs:
           cd GreenIT-Analysis-cli-master
           npm install
           npm link
+
       - name: Debug — list scenarios folder
         run: ls -R
-
 
       - name: Run GreenIT Analysis CLI
         run: |
