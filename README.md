@@ -238,12 +238,13 @@ Nous pouvons utiliser l'utilitaire GreenFrame qui permet de calculer et d'estime
 - du réseau (à partir de la taille des données reçues et envoyées),
 - pour le navigateur uniquement, de l'écran (à partir du temps d'exécution du scénario).
 
-   (Consulter les offres)                 | cpu (Wh)   | mem (Wh)   | disk (Wh) | network (Wh)       | screen (Wh) | total (Wh)   |
-| ------------------ | ---------- | ---------- | --------- | ------------------ | ----------- | ------------ | 
-| Navigateur         | 0.0024   | 0.00011   | 0.0       | <mark>0.059</mark> | <mark>0.11</mark> | 0.17 |
-| Serveur Web        | 0.000025   | 0.0000046   | 0.0       | <mark>0.059</mark> | 0.0                | 0.064 |
+| Consulter la page d'accueil des offres        | CPU (Wh) | Mémoire (Wh) | Disque (Wh) | Réseau (Wh) | Écran (Wh) | Total (Wh) |
+|------------------|----------|--------------|-------------|-------------|------------|------------|
+| **Navigateur**   | 0.0024   | 0.00011      | 0.0         | **0.059**   | **0.11**   | 0.17       |
+| **Serveur Web**  | 0.000025 | 0.0000046    | 0.0         | **0.059**   | 0.0        | 0.064      |
 
- (Consulter une offre)                 | cpu (Wh)   | mem (Wh)   | disk (Wh) | network (Wh)       | screen (Wh) | total (Wh)   |
-| ------------------ | ---------- | ---------- | --------- | ------------------ | ----------- | ------------ | 
-| Navigateur         | 0.0014     | 0.000078  | 0.0       | <mark>0.059</mark> | <mark>0.69</mark> | 0.13  |
-| Serveur Web        | 0.000025   | 0.0000029   | 0.0       | <mark>0.059</mark> | 0.0                | 0.062 |
+| Consulter une offre        | CPU (Wh)   | Mémoire (Wh) | Disque (Wh) | Réseau (Wh) | Écran (Wh) | Total (Wh) |
+|------------------|------------|--------------|-------------|-------------|------------|------------|
+| **Navigateur**   | 0.0014     | 0.000078     | 0.0         | **0.059**   | **0.69**   | 0.13       |
+| **Serveur Web**  | 0.000025   | 0.0000029    | 0.0         | **0.059**   | 0.0        | 0.062      |
+
