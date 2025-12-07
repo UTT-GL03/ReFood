@@ -62,26 +62,7 @@ jobs:
 
       - name: Generate sample
         run: |
-          npx --yes dummy-json ./frontend/sample_data.hbs > sample_data_raw.json
-
-      - name: Validate and extract docs array
-        run: |
-          echo "=== Raw sample data (first 500 chars) ==="
-          head -c 500 sample_data_raw.json
-          echo ""
-          echo ""
-          echo "=== Processing JSON to extract 'docs' array ==="
-          # Extract the 'docs' array and prepare for _bulk_docs (which expects just the array)
-          node -e "
-            const fs = require('fs');
-            const data = JSON.parse(fs.readFileSync('sample_data_raw.json', 'utf8'));
-            const docs = data.docs || data;
-            fs.writeFileSync('sample_data.json', JSON.stringify(docs, null, 2), 'utf8');
-            console.log('Extracted docs count:', docs.length);
-          "
-          echo "=== Processed sample data (first 500 chars) ==="
-          head -c 500 sample_data.json
-          echo ""
+          npx --yes dummy-json ./frontend/sample_data.hbs > sample_data.json
 
       - name: Save samples for later
         uses: actions/upload-artifact@v4
