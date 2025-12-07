@@ -1,8 +1,10 @@
 name: ReFood
+
 on:
   push:
 
 jobs:
+
   build:
     runs-on: ubuntu-latest
     steps:
@@ -35,7 +37,7 @@ jobs:
 
 
   build_samples:
-    needs: build
+    #needs: build
     runs-on: ubuntu-latest
     steps:
       - name: Download sources
@@ -45,14 +47,6 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-
-      - name: Show repo tree for debug
-        run: |
-          echo "PWD: $(pwd)"
-          ls -la
-          ls -la frontend || true
-          echo "Show root docker-compose file if present:"
-          ls -la docker-compose.yml || ls -la docker-compose.yaml || true
 
       - name: Download frontend build
         uses: actions/download-artifact@v4
@@ -74,7 +68,6 @@ jobs:
         run: |
           # docker compose expects to be run from repo root where docker-compose.yml is located
           docker compose up --detach
-        # continue even if this step fails? we keep the default (fail) to see issues early
 
       - name: Show docker logs
         run: docker compose logs --no-color
@@ -113,6 +106,12 @@ jobs:
           curl -s http://refooduser:refoodmdp@localhost:5984/refood_db | jq '.doc_count' || echo "Could not get doc_count"
 
 
+  measure_ecoindex:
+    needs: 
+      - build_samples
+      - build
+    runs-on: ubuntu-latest
+    steps:
       - name: Install GreenIT Analysis CLI
         run: |
           wget https://github.com/cnumr/GreenIT-Analysis-cli/archive/refs/heads/master.zip -O master.zip
@@ -127,28 +126,10 @@ jobs:
           # explicit port 80 — the compose file maps host:80 -> container:80
           args: http://localhost:80/ 200 30000 500
 
-      - name: Debug — verify services and data
-        run: |
-          echo "=== Checking Nginx (port 80) ==="
-          curl -v http://localhost:80/ 2>&1 | head -30
-          echo ""
-          echo "=== Checking CouchDB (port 5984) ==="
-          curl -v http://localhost:5984/ 2>&1 | head -20
-          echo ""
-          echo "=== Checking CouchDB refood_db ==="
-          curl -s http://refooduser:refoodmdp@localhost:5984/refood_db | jq '.doc_count' || echo "No refood_db or jq error"
-          echo ""
-          echo "=== Docker containers running ==="
-          docker ps --format "table {{.Names}}\t{{.Ports}}"
-          echo ""
-          echo "=== Docker logs (nginx) ==="
-          docker logs refood-static_hosting-1 2>&1 | tail -20 || echo "No nginx logs"
-
       - name: Run GreenIT Analysis CLI
         run: |
           greenit analyse --format html --ci scenarios/read_offers.yml 2>&1 | tee greenit.log
         continue-on-error: true
-
 
       - name: Save results
         uses: actions/upload-artifact@v4
@@ -165,8 +146,11 @@ jobs:
         run: |
           docker compose down --volumes --remove-orphans || true
 
+
   measure_energy_consumption:
-    needs: build_samples
+    needs: 
+      - build_samples
+      - build
     runs-on: ubuntu-latest
     steps:
       - name: Download sources
