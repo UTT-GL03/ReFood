@@ -59,7 +59,7 @@ jobs:
 
       - name: Start CouchDB (docker compose)
         run: |
-          docker compose up --detach couchdb  # démarrer seulement le service CouchDB si possible
+          docker compose up --detach backend  # démarrer seulement le service CouchDB si possible
 
       - name: Wait for CouchDB
         run: |
