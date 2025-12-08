@@ -50,8 +50,8 @@ services:
   updated_samples:
     image: curlimages/curl
     environment:
-      - COUCHDB_USER
-      - COUCHDB_PASSWORD
+      - COUCHDB_USER=refooduser
+      - COUCHDB_PASSWORD=refoodmdp
     volumes:
       - ./frontend:/frontend:ro
     entrypoint: ["/bin/sh", "-c"]
