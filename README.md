@@ -174,7 +174,7 @@ Mode | Ecoindex | GES (gCO2e) | taille du DOM | Requêtes | taille de la page (k
 | Développement | 74 B 🟠 | 1.61 | 359 | 29 | 1775
 | Pré-Production | 82 A 🟢 | 1.37 | 355 | 5 | 344 
 
-*Tab. 1 — Évaluation de l'impact du prototype de la page d'accueil.*
+*Tab. 4 — Évaluation de l'impact du prototype de la page d'accueil.*
 
 ### Pages des offres
 Les pages des offres ont pour HTTP-URI offre/{id}. 
@@ -192,7 +192,7 @@ Bien que nous ayons suivi la maquette pour la conception des pages d'offres, la 
 | 3. Revenir à l'accueil et consulter à nouveau la page des offres | 82 A 🟢 | 1.37 | 355 | 5 | 344 |
 | 4. Choisir une nouvelle offre | 95 A 🟢 | 1.10 | 31 | 5 | 344 |
 
-*Tab.2: Évaluation de l'impact du scénario "Consulter des offres" dans le prototype n°1.*
+*Tab.5: Évaluation de l'impact du scénario "Consulter des offres" dans le prototype n°1.** 
 
 Bien que nos estimations actuelles soient faussées à la baisse à cause des données statiques, elles restent comparables à celles de nos concurrents.
 Avec une moyenne concurrente de 1,95 g par page, notre objectif de rester sous 1,40 g représente déjà une amélioration significative.
@@ -225,6 +225,7 @@ Les mesures utilisées pour calculer l’EcoIndex sont désormais générées au
 | 3. Revenir à l'accueil et consulter à nouveau la page des offres | <del>82 A 🟢</del><br/>52 D 🟡 | <del>1.37</del><br/>1.95 | <del>355</del><br/>54 015 | <del>5</del><br/>0 | <del>344</del><br/>0 |
 | 4. Choisir une nouvelle offre | <del>95 A 🟢</del><br/>94 A 🟢 | <del>1.10</del><br/>1.13 | <del>31</del><br/>35 | <del>5</del><br/>6 | <del>344</del><br/>0 |
 
+**Tab 6. Ecoindex après passage à l'echelle**
 
 La baisse de l’EcoIndex est nettement plus marquée pour la page listant les offres que pour la page d’une offre. Cela s’explique par la nature même de l’EcoIndex, qui évalue l’impact environnemental global d’une page, plus une page contient d’éléments, plus cette part augmente.
 
@@ -247,4 +248,35 @@ Nous pouvons utiliser l'utilitaire GreenFrame qui permet de calculer et d'estime
 |------------------|------------|--------------|-------------|-------------|------------|------------|
 | **Navigateur**   | 0.0014     | 0.000078     | 0.0         | **0.059**   | **0.69**   | 0.13       |
 | **Serveur Web**  | 0.000025   | 0.0000029    | 0.0         | **0.059**   | 0.0        | 0.062      |
+
+**Tab 7: Mesure de la consommation énergétique pour nos 2 scénarios**
+## Introduction d'une base de donnée
+
+Afin de réduire l'impact énérgétique du réseau, nous stockons désormais les données de l'application (on a une v2.0.0) dans une base de données (CouchDB). Cette évolution nous permet, lors de l'affichage d'une offre, de charger une seule offre plutôt que 3000.
+
+|                    | cpu (s) | screen (s) | mem (B) | disk (B) | network (B) |
+| ------------------ | -------- | ---------- | -------- | -------- | ----------- |
+| Navigateur  | 0.0392| 17.4 | 1.11e+8 | 0.00 | 2.18e+3 |
+| Serveur Web  | 0.0000662 | 0.00 | 5.58e+6| 0.00 | 2.05e+3 |
+| Base de données | 0.0479| 0.00 | 8.40e+7 | 0.00 | 0 |
+
+**Tab.8 : Effet sur l’utilisation des ressources suite à l’introduction d’une base de données, lors de la consultation d’une offre.**
+
+On remarque une amélioration correcte grâce à cette ajout mais aussi un ajout de consommation electrique due à la base de données mais qui est plutôt faible. 
+
+| (Consulter l'index)               | CPU (Wh)                              | Mémoire (Wh)                          | Disque (Wh) | Réseau (Wh)                              | Écran (Wh)               | Total (Wh)                              |
+| ----------------- | -------------------------------------- | -------------------------------------- | ----------- | ------------------------------------------ | ------------------------- | ---------------------------------------- |
+| **Navigateur**    | <del>0.0024</del><br/>0.00046          | <del>0.00011</del><br/>0.000040        | 0.0         | <del>0.059</del><br/>0.000011             | <del>0.11</del><br/>0.065 | <del>0.17</del><br/>0.065               |
+| **Serveur Web**   | <del>0.000025</del><br/>0.0000014      | <del>0.0000046</del><br/>0.0000028     | 0.0         | <del>0.059</del><br/>0.000011             | 0.0                       | <del>0.064</del><br/>0.000015           |
+| **Backend**       | <del>0</del><br/>0.00081                                    | <del>0</del><br/>0.000042                                     | 0.0           | <del>0</del><br/>2.1e-7                                        | 0.0                        | <del>0</del><br/>0.00085                                        |
+
+| Consulter une offre              | CPU (Wh)                              | Mémoire (Wh)                          | Disque (Wh) | Réseau (Wh)                              | Écran (Wh)                | Total (Wh)                              |
+| ----------------- | -------------------------------------- | -------------------------------------- | ----------- | ------------------------------------------ | -------------------------- | ---------------------------------------- |
+| **Navigateur**    | <del>0.0014</del><br/>0.00049          | <del>0.000078</del><br/>0.000041       | 0.0         | <del>0.059</del><br/>0.000011             | <del>0.69</del><br/>0.068  | <del>0.13</del><br/>0.068               |
+| **Serveur Web**   | <del>0.000025</del><br/>0.0000012      | <del>0.0000029</del><br/>0.0000029     | 0.0         | <del>0.059</del><br/>0.000010             | 0.0                        | <del>0.062</del><br/>0.000015           |
+| **Backend**       | <del>0</del><br/>0.00084               | <del>0</del><br/>0.000043              | 0.0         | <del>0</del><br/>0                        | 0.0                        | <del>—0/del><br/>0.00088                |
+
+**Tab.9 : Effet sur l’utilisation des ressources suite à l’introduction d’une base de donnéespour nos deux scénarios.**
+
+## Stratégie de limitation du nombre d'éléments affichés
 
