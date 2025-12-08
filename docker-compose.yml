@@ -44,5 +44,17 @@ services:
       put backend:5984/refood_db/_security --data '{"members":{"roles":[]},"admins":{"roles":["_admin"]}}'
 
     depends_on:
-      backend:
-        condition: service_healthy
+      - backend
+        
+  index:
+    image: curlimages/curl
+    entrypoint: ["/bin/sh","-c"]
+    volumes:
+      - ./backend/by_date.json:/by_date.json
+    command: |
+      curl -X POST http://backend:5984/qvotidie/_index \
+        -H "Content-Type: application/json" \
+        -d @/by_date.json \
+        -u '${COUCHDB_USER}:${COUCHDB_PASSWORD}'
+    depends_on:
+      - accessible_backend
