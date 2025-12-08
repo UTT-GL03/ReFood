@@ -40,6 +40,7 @@ services:
       # config CouchDB
       put backend:5984/_node/nonode@nohost/_config/chttpd/enable_cors --data '"true"'
       put backend:5984/_node/nonode@nohost/_config/cors/origins --data '"*"'
+      put backend:5984/_node/nonode@nohost/_config/cors/credentials --data '"true"'
       put backend:5984/refood_db
       put backend:5984/refood_db/_security --data '{"members":{"roles":[]},"admins":{"roles":["_admin"]}}'
 

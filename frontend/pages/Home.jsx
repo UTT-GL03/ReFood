@@ -5,17 +5,25 @@ import Offre from '../components/Offre'
 function Home() {
   const [offres, setOffres] = useState([])
 
-useEffect(() => {
-  fetch('http://localhost:5984/refood_db/_all_docs?include_docs=true', {
-    headers: {
-      'Authorization': 'Basic ' + btoa('refooduser:refoodmdp')
+  useEffect(() => {
+    const query = {
+      selector: {},
+      sort: [{ "date_publication": "desc" }], 
+      limit: 20
     }
-  })
-    .then(res => res.json())
-    .then(data => setOffres(data.rows.map(row => row.doc)))
-    .catch(err => console.error("Erreur chargement offres :", err))
-}, [])
 
+    fetch('http://localhost:5984/refood_db/_find', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Basic ' + btoa('refooduser:refoodmdp')
+      },
+      body: JSON.stringify(query)
+    })
+      .then(res => res.json())
+      .then(data => setOffres(data.docs))
+      .catch(err => console.error("Erreur chargement offres :", err))
+  }, [])
 
   return (
     <main className="container">
