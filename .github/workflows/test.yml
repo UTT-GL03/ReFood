@@ -105,7 +105,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Start application
-        uses: ./.github/actions/start
+        uses: ./.github\actions\start\action.yml
 
       - name: Install GreenFrame CLI
         run: |
