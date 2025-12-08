@@ -50,6 +50,12 @@ jobs:
       - name: Generate sample
         run: |
           npx --yes dummy-json ./frontend/sample_data.hbs > sample_data.json
+
+      - name: Save samples for later
+        uses: actions/upload-artifact@v4
+        with:
+          name: samples
+          path: sample_data.json
       
 
 
