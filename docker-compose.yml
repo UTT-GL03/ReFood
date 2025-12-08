@@ -18,63 +18,34 @@ services:
       - COUCHDB_USER
       - COUCHDB_PASSWORD
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:5984/_up"]
-      interval: 5s
-      retries: 30
-      start_period: 5s
+      test: curl -f http://localhost:5984/_up || exit 1
+      start_period: 10s
+      start_interval: 2s
 
   accessible_backend:
     image: curlimages/curl
     entrypoint: ["/bin/sh","-c"]
-    command: |
-      # retry loop pour attendre CouchDB
-      for i in $(seq 1 30); do
-        curl -s http://backend:5984/ && break
-        echo "Waiting for CouchDB..."
-        sleep 2
-      done
-
-      # alias curl avec user/password
-      alias put="curl -X PUT -u '${COUCHDB_USER}:${COUCHDB_PASSWORD}'"
-
-      # config CouchDB
-      put backend:5984/_node/nonode@nohost/_config/chttpd/enable_cors --data '"true"'
-      put backend:5984/_node/nonode@nohost/_config/cors/origins --data '"*"'
-      put backend:5984/_node/nonode@nohost/_config/cors/credentials --data '"true"'
-      put backend:5984/refood_db
-      put backend:5984/refood_db/_security --data '{"members":{"roles":[]},"admins":{"roles":["_admin"]}}'
-
-    depends_on:
-      - backend
-
-  updated_samples:
-    image: curlimages/curl
-    environment:
-      - COUCHDB_USER=refooduser
-      - COUCHDB_PASSWORD=refoodmdp
-    volumes:
-      - ./frontend:/frontend:ro
-    entrypoint: ["/bin/sh", "-c"]
     command:
       - |
-        curl -X POST -u "$${COUCHDB_USER}:$${COUCHDB_PASSWORD}" \
-          http://backend:5984/refood_db/_bulk_docs \
-          -H "Content-Type: application/json" \
-          -d @/frontend/sample_data.json
-        
+        alias put="curl -X PUT -u '${COUCHDB_USER}:${COUCHDB_PASSWORD}'"
+        put backend:5984/_node/nonode@nohost/_config/chttpd/enable_cors --data '"true"'
+        put backend:5984/_node/nonode@nohost/_config/cors/origins --data '"*"'
+        put backend:5984/refood_db
+        put backend:5984/refood_db/_security --data '{"members":{"roles":[]},"admins":{"roles":["_admin"]}}'
     depends_on:
-      accessible_backend:
-        condition: service_completed_successfully
-        
+      backend:
+        condition: service_healthy
+
   index:
     image: curlimages/curl
     entrypoint: ["/bin/sh","-c"]
     volumes:
       - ./backend/by_date.json:/by_date.json
-    command: |
-      curl -X POST http://backend:5984/refood_db/_index \
-        -H "Content-Type: application/json" \
-        -d @/by_date.json \
-        -u '${COUCHDB_USER}:${COUCHDB_PASSWORD}'
+      - ./backend/by_section_and_date.json:/by_section_and_date.json
+    command:
+      - |
+        curl -X POST http://backend:5984/refood_db/_index -H "Content-Type: application/json" -d @/by_date.json -u '${COUCHDB_USER}:${COUCHDB_PASSWORD}'
+        curl -X POST http://backend:5984/refood_db/_index -H "Content-Type: application/json" -d @/by_section_and_date.json -u '${COUCHDB_USER}:${COUCHDB_PASSWORD}'
     depends_on:
-      - accessible_backend
+      accessible_backend:
+        condition: service_completed_successfully
