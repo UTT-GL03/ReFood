@@ -11,8 +11,8 @@ runs:
         path: frontend/dist
     - name: Start containers
       run: |
-        export COUCHDB_USER="refooduser">> $GITHUB_ENV
-        export COUCHDB_PASSWORD="refoodmdp">> $GITHUB_ENV
+        export COUCHDB_USER="refooduser"
+        export COUCHDB_PASSWORD="refoodmdp"
         docker compose up --detach
       shell: bash
     - name: Wait for frontend
