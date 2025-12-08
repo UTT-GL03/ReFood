@@ -280,3 +280,21 @@ On remarque une amélioration correcte grâce à cette ajout mais aussi un ajout
 
 ## Stratégie de limitation du nombre d'éléments affichés
 
+Dans une application de dons ou de ventes alimentaires de type Leboncoin, les utilisateurs publient de nouvelles annonces de manière continue au cours de la journée. Afficher l’ensemble des offres existantes à chaque visite serait coûteux en termes de transfert de données, de temps de chargement et d’impact environnemental.
+
+Pour améliorer les performances tout en préservant une expérience utilisateur cohérente, nous limitons donc le nombre d’offres affichées simultanément sur la page d’accueil.
+
+Deux stratégies étaient envisageables :
+
+- afficher uniquement les offres publiées aujourd’hui,
+
+- afficher les n dernières offres publiées, indépendamment de la date.
+
+Nous avons ainsi choisi d’afficher les 20 offres les plus récentes, ce qui présente plusieurs avantages :
+
+- réduire le volume de données transférées entre le serveur et le navigateur ;
+  
+- diminuer la charge de calcul côté serveur ;
+  
+- améliorer les temps d’affichage pour les utilisateurs ;
+
