@@ -72,8 +72,8 @@ jobs:
           name: frontend-build
           path: frontend/dist
 
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - name: Start application
+        uses: ./.github/actions/start
 
       - name: Install GreenIT Analysis CLI
         run: |
@@ -104,9 +104,8 @@ jobs:
       - name: Download sources
         uses: actions/checkout@v4
 
-      - name: Start frontend (docker compose)
-        run: |
-          docker compose up --detach
+      - name: Start application
+        uses: ./.github/actions/start
 
       - name: Install GreenFrame CLI
         run: |
