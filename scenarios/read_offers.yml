@@ -1,6 +1,6 @@
 # Scénario GreenIT CLI pour analyser les offres ReFood
 - name: Consulter les offres ReFood
-  url: http://localhost:80/   # Remplace 3000 si ton frontend tourne sur un autre port
+  url: http://localhost:5000/   
   waitForSelector: .offre        # On attend que les offres soient chargées
 
   actions:
