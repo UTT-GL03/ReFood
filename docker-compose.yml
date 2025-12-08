@@ -46,6 +46,25 @@ services:
 
     depends_on:
       - backend
+
+  updated_samples:
+    image: curlimages/curl
+    environment:
+      - COUCHDB_USER
+      - COUCHDB_PASSWORD
+    volumes:
+      - ./frontend:/frontend:ro
+    entrypoint: ["/bin/sh", "-c"]
+    command:
+      - |
+        curl -X POST -u "$${COUCHDB_USER}:$${COUCHDB_PASSWORD}" \
+          http://backend:5984/refood_db/_bulk_docs \
+          -H "Content-Type: application/json" \
+          -d @/frontend/sample_data.json
+        
+    depends_on:
+      accessible_backend:
+        condition: service_completed_successfully
         
   index:
     image: curlimages/curl
@@ -53,7 +72,7 @@ services:
     volumes:
       - ./backend/by_date.json:/by_date.json
     command: |
-      curl -X POST http://backend:5984/qvotidie/_index \
+      curl -X POST http://backend:5984/refood_db/_index \
         -H "Content-Type: application/json" \
         -d @/by_date.json \
         -u '${COUCHDB_USER}:${COUCHDB_PASSWORD}'
