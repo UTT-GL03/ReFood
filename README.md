@@ -303,13 +303,13 @@ L’application permettra à l’utilisateur de charger progressivement davantag
 Mettre la photo 
 *Fig.4_: Chargement progressif (à la demande) des offres .*
 
-| (Consulter l'index)               | CPU (Wh)                              | Mémoire (Wh)                          | Disque (Wh) | Réseau (Wh)                              | Écran (Wh)               | Total (Wh)                              |
-| ----------------- | -------------------------------------- | -------------------------------------- | ----------- | ------------------------------------------ | ------------------------- | ---------------------------------------- |
-| **Navigateur**    | 0.0010          | <del>0.00049</del><br/>0.000047        | 0.0         | 0.002             | <del>0.065</del><br/>0.068 | 0.068               |
-| **Serveur Web**   | <del>0.0000058</del><br/>0.0000053     | 0.0000029     | 0.0         | 0.0019             | 0.0                       | 0.0019           |
-| **Backend**       | <del>0.00073</del><br/>0.00071              | 0.000048              | 0.0         | 2.1e-7                  | 0.0                        | <del>0.00082</del><br/>0.00075              | 
-**Tab.9 : Effet sur l’utilisation des ressources de la consultation de l'index suite à la limitation d'affichage de données.**
+| Composant | CPU (Wh) | Mémoire (Wh) | Disque (Wh) | Réseau (Wh) | Écran (Wh) | Total (Wh) |
+|-----------|----------|--------------|-------------|-------------|------------|------------|
+| **Navigateur** | 0.0010 | <del>0.00049</del><br/>0.000047 | 0.0 | 0.002 | <del>0.065</del><br/>0.068 | 0.068 |
+| **Serveur Web** | <del>0.0000058</del><br/>0.0000053 | 0.0000029 | 0.0 | 0.0019 | 0.0 | 0.0019 |
+| **Backend** | <del>0.00073</del><br/>0.00071 | 0.000048 | 0.0 | 2.1e-7 | 0.0 | <del>0.00082</del><br/>0.00075 |
 
+**Tab.9 : Effet sur l’utilisation des ressources de la consultation de l'index suite à la limitation d'affichage de données.**
 
 L'implémentation de la stratégie de limitation (v2.0.1) ne change pas grand chose mais on remarque que la consommation électrique de l'ensemble des composants se retrouve réduite quasiment à celle de l'écran.
 
