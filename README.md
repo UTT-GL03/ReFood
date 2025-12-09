@@ -63,7 +63,7 @@ JeDonne.fr        | 33             | E 🟥      | [..](https://github.com/UTT-G
 Donnons.org       | 14             | F 🟪      | [..](https://github.com/UTT-GL03/ReFood/blob/main/benchmark/donnons.md)
 ToutDonner.com    | 71             | B 🟩      | [..](https://github.com/UTT-GL03/ReFood/blob/main/benchmark/toutdonner.md)
 
-*Tab.1 : Mesure de l'EcoIndex moyen des services web étudiés.*
+**Tab.1 : Mesure de l'EcoIndex moyen des services web étudiés.**
 
 ## Analyse
 Les mesures de l'impact moyen de ces services (cf. Tab.1) révèlent des **classes EcoIndex très contrastées**.  
@@ -192,7 +192,7 @@ Bien que nous ayons suivi la maquette pour la conception des pages d'offres, la 
 | 3. Revenir à l'accueil et consulter à nouveau la page des offres | 82 A 🟢 | 1.37 | 355 | 5 | 344 |
 | 4. Choisir une nouvelle offre | 95 A 🟢 | 1.10 | 31 | 5 | 344 |
 
-*Tab.5: Évaluation de l'impact du scénario "Consulter des offres" dans le prototype n°1.** 
+**Tab.5: Évaluation de l'impact du scénario "Consulter des offres" dans le prototype n°1.** 
 
 Bien que nos estimations actuelles soient faussées à la baisse à cause des données statiques, elles restent comparables à celles de nos concurrents.
 Avec une moyenne concurrente de 1,95 g par page, notre objectif de rester sous 1,40 g représente déjà une amélioration significative.
@@ -225,7 +225,7 @@ Les mesures utilisées pour calculer l’EcoIndex sont désormais générées au
 | 3. Revenir à l'accueil et consulter à nouveau la page des offres | <del>82 A 🟢</del><br/>52 D 🟡 | <del>1.37</del><br/>1.95 | <del>355</del><br/>54 015 | <del>5</del><br/>0 | <del>344</del><br/>0 |
 | 4. Choisir une nouvelle offre | <del>95 A 🟢</del><br/>94 A 🟢 | <del>1.10</del><br/>1.13 | <del>31</del><br/>35 | <del>5</del><br/>6 | <del>344</del><br/>0 |
 
-**Tab 6. Ecoindex après passage à l'echelle**
+**Tab. 6: Ecoindex après passage à l'echelle**
 
 La baisse de l’EcoIndex est nettement plus marquée pour la page listant les offres que pour la page d’une offre. Cela s’explique par la nature même de l’EcoIndex, qui évalue l’impact environnemental global d’une page, plus une page contient d’éléments, plus cette part augmente.
 
@@ -249,7 +249,7 @@ Nous pouvons utiliser l'utilitaire GreenFrame qui permet de calculer et d'estime
 | **Navigateur**   | 0.0014     | 0.000078     | 0.0         | **0.059**   | **0.069**   | 0.13       |
 | **Serveur Web**  | 0.000025   | 0.0000029    | 0.0         | **0.059**   | 0.0        | 0.062      |
 
-**Tab 7: Mesure de la consommation énergétique pour nos 2 scénarios**
+**Tab. 7: Mesure de la consommation énergétique pour nos 2 scénarios**
 ## Introduction d'une base de donnée
 
 Afin de réduire l'impact énérgétique du réseau, nous stockons désormais les données de l'application (on a une v2.0.0) dans une base de données (CouchDB). Cette évolution nous permet, lors de l'affichage d'une offre, de charger une seule offre plutôt que 3000.
@@ -276,7 +276,7 @@ On remarque une amélioration correcte grâce à cette ajout mais aussi un ajout
 | **Serveur Web**   | <del>0.000025</del><br/>0.0000012      | <del>0.0000029</del><br/>0.0000029     | 0.0         | <del>0.059</del><br/>0.000010             | 0.0                        | <del>0.062</del><br/>0.000015           |
 | **Backend**       | <del>0</del><br/>0.00084               | <del>0</del><br/>0.000043              | 0.0         | <del>0</del><br/>0                        | 0.0                        | <del>0/del><br/>0.00088                |
 
-**Tab.9 : Effet sur l’utilisation des ressources suite à l’introduction d’une base de donnéespour nos deux scénarios.**
+**Tab.9 : Effet sur l’utilisation des ressources suite à l’introduction d’une base de données pour nos deux scénarios.**
 
 ## Stratégie de limitation du nombre d'éléments affichés
 
@@ -302,7 +302,7 @@ L’application permettra à l’utilisateur de charger progressivement davantag
 
 <img src="benchmark/Suivant.png" alt="Suivant" width="760" height="688">
 
-*Fig.4_: Chargement progressif (à la demande) des offres .*
+*Fig. 4 — Chargement progressif (à la demande) des offres .*
 
 | Composant | CPU (Wh) | Mémoire (Wh) | Disque (Wh) | Réseau (Wh) | Écran (Wh) | Total (Wh) |
 |-----------|----------|--------------|-------------|-------------|------------|------------|
@@ -310,7 +310,7 @@ L’application permettra à l’utilisateur de charger progressivement davantag
 | **Serveur Web** | <del>0.0000058</del><br/>0.0000053 | 0.0000029 | 0.0 | 0.0019 | 0.0 | 0.0019 |
 | **Backend** | <del>0.00073</del><br/>0.00071 | 0.000048 | 0.0 | 2.1e-7 | 0.0 | <del>0.00082</del><br/>0.00075 |
 
-**Tab.9 : Effet sur l’utilisation des ressources de la consultation de l'index suite à la limitation d'affichage de données.**
+**Tab.10 : Effet sur l’utilisation des ressources de la consultation de l'index suite à la limitation d'affichage de données.**
 
 L'implémentation de la stratégie de limitation (v2.0.1) ne change pas grand chose mais on remarque que la consommation électrique de l'ensemble des composants se retrouve réduite quasiment à celle de l'écran.
 
