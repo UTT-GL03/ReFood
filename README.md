@@ -300,7 +300,8 @@ Nous avons ainsi choisi d’afficher les 21 offres les plus récentes, ce qui pr
 
 L’application permettra à l’utilisateur de charger progressivement davantage d’offres, afin de pouvoir consulter les publications plus anciennes à la demande, sans surcharger l’affichage initial.
 
-Mettre la photo 
+<img src="benchmark/Suivant.png" alt="Suivant" width="760" height="688">
+
 *Fig.4_: Chargement progressif (à la demande) des offres .*
 
 | Composant | CPU (Wh) | Mémoire (Wh) | Disque (Wh) | Réseau (Wh) | Écran (Wh) | Total (Wh) |
