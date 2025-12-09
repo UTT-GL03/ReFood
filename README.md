@@ -142,7 +142,7 @@ Elle contient un titre, une description, une quantité, un type d’aliment, un 
 
 <img width="1080" height="720" alt="Design sans titre (1)" src="https://github.com/user-attachments/assets/675a23bf-57ec-446e-ac7d-cfd4a1492549" />
 
-Fig.1: Maquette de l'interface du prototype - à droite : type de une du site avec des offres, à gauche : type de page d'une offre.
+*Fig.1: Maquette de l'interface du prototype - à droite : type de une du site avec des offres, à gauche : type de page d'une offre.*
 
 Pour des raisons de respect des droits d’auteur, nous utilisons des données générées avec dummy-json. Bien que fictives, ces données respectent la structure des services des services concurrents (voir [modèle de données](https://github.com/UTT-GL03/ReFood/blob/main/sample_data.hbs)).
 ---
@@ -159,7 +159,7 @@ La page d'accueil de notre prototype affiche actuellement des offres de dons ali
 
 <img width="760" height="688" alt="image" src="https://github.com/user-attachments/assets/164f6508-e8bb-4aba-8a49-9eed899e1adb" />
 
-*Fig. 1 — Page d’accueil de Refood*
+*Fig. 2 — Page d’accueil de Refood*
 
 Nous avons opté pour PicoCSS, un framework CSS minimaliste, en raison de sa faible empreinte, ce qui le rend idéal pour cette phase de test. 
 
@@ -183,7 +183,7 @@ Bien que nous ayons suivi la maquette pour la conception des pages d'offres, la 
 
 <img width="395" height="546" alt="image" src="https://github.com/user-attachments/assets/2a891ca5-033f-44c9-a80b-fc61dc423e5d" />
 
-*Fig. 2 — page d'une offre.*
+*Fig. 3 — page d'une offre.*
 
 | Scénario | EcoIndex | GES (gCO2e) | Taille du DOM | Requêtes | Taille de la page (ko) |
 |---|---|---|---|---|---|
@@ -241,12 +241,12 @@ Nous pouvons utiliser l'utilitaire GreenFrame qui permet de calculer et d'estime
 
 | Consulter la page d'accueil des offres        | CPU (Wh) | Mémoire (Wh) | Disque (Wh) | Réseau (Wh) | Écran (Wh) | Total (Wh) |
 |------------------|----------|--------------|-------------|-------------|------------|------------|
-| **Navigateur**   | 0.0024   | 0.00011      | 0.0         | **0.059**   | **0.11**   | 0.17       |
+| **Navigateur**   | 0.0024   | 0.00011      | 0.0         | **0.059**   | **0.11**   | 0.12       |
 | **Serveur Web**  | 0.000025 | 0.0000046    | 0.0         | **0.059**   | 0.0        | 0.064      |
 
 | Consulter une offre        | CPU (Wh)   | Mémoire (Wh) | Disque (Wh) | Réseau (Wh) | Écran (Wh) | Total (Wh) |
 |------------------|------------|--------------|-------------|-------------|------------|------------|
-| **Navigateur**   | 0.0014     | 0.000078     | 0.0         | **0.059**   | **0.69**   | 0.13       |
+| **Navigateur**   | 0.0014     | 0.000078     | 0.0         | **0.059**   | **0.069**   | 0.13       |
 | **Serveur Web**  | 0.000025   | 0.0000029    | 0.0         | **0.059**   | 0.0        | 0.062      |
 
 **Tab 7: Mesure de la consommation énergétique pour nos 2 scénarios**
@@ -266,15 +266,15 @@ On remarque une amélioration correcte grâce à cette ajout mais aussi un ajout
 
 | (Consulter l'index)               | CPU (Wh)                              | Mémoire (Wh)                          | Disque (Wh) | Réseau (Wh)                              | Écran (Wh)               | Total (Wh)                              |
 | ----------------- | -------------------------------------- | -------------------------------------- | ----------- | ------------------------------------------ | ------------------------- | ---------------------------------------- |
-| **Navigateur**    | <del>0.0024</del><br/>0.00046          | <del>0.00011</del><br/>0.000040        | 0.0         | <del>0.059</del><br/>0.000011             | <del>0.11</del><br/>0.065 | <del>0.17</del><br/>0.065               |
-| **Serveur Web**   | <del>0.000025</del><br/>0.0000014      | <del>0.0000046</del><br/>0.0000028     | 0.0         | <del>0.059</del><br/>0.000011             | 0.0                       | <del>0.064</del><br/>0.000015           |
-| **Backend**       | <del>0</del><br/>0.00081                                    | <del>0</del><br/>0.000042                                     | 0.0           | <del>0</del><br/>2.1e-7                                        | 0.0                        | <del>0</del><br/>0.00085                                        |
+| **Navigateur**    | <del>0.0024</del><br/>0.001          | <del>0.00011</del><br/>0.000049        | 0.0         | <del>0.059</del><br/>0.0002             | <del>0.11  </del><br/>0.065 | <del>0.12</del><br/>0.068               |
+| **Serveur Web**   | <del>0.000025</del><br/>0.0000058      | <del>0.0000046</del><br/>0.0000028     | 0.0         | <del>0.059</del><br/>0.0019             | 0.0                       | <del>0.064</del><br/>0.0019           |
+| **Backend**       | <del>0</del><br/>0.00073                                   | <del>0</del><br/>0.000048                                    | 0.0           | <del>0</del><br/>2.1e-7                                        | 0.0                        | <del>0</del><br/>0.00084                                       |
 
 | Consulter une offre              | CPU (Wh)                              | Mémoire (Wh)                          | Disque (Wh) | Réseau (Wh)                              | Écran (Wh)                | Total (Wh)                              |
 | ----------------- | -------------------------------------- | -------------------------------------- | ----------- | ------------------------------------------ | -------------------------- | ---------------------------------------- |
-| **Navigateur**    | <del>0.0014</del><br/>0.00049          | <del>0.000078</del><br/>0.000041       | 0.0         | <del>0.059</del><br/>0.000011             | <del>0.69</del><br/>0.068  | <del>0.13</del><br/>0.068               |
+| **Navigateur**    | <del>0.0014</del><br/>0.0010          | <del>0.000078</del><br/>0.000041       | 0.0         | <del>0.059</del><br/>0.000011             | <del>0.69</del><br/>0.068  | <del>0.13</del><br/>0.068               |
 | **Serveur Web**   | <del>0.000025</del><br/>0.0000012      | <del>0.0000029</del><br/>0.0000029     | 0.0         | <del>0.059</del><br/>0.000010             | 0.0                        | <del>0.062</del><br/>0.000015           |
-| **Backend**       | <del>0</del><br/>0.00084               | <del>0</del><br/>0.000043              | 0.0         | <del>0</del><br/>0                        | 0.0                        | <del>—0/del><br/>0.00088                |
+| **Backend**       | <del>0</del><br/>0.00084               | <del>0</del><br/>0.000043              | 0.0         | <del>0</del><br/>0                        | 0.0                        | <del>0/del><br/>0.00088                |
 
 **Tab.9 : Effet sur l’utilisation des ressources suite à l’introduction d’une base de donnéespour nos deux scénarios.**
 
@@ -290,7 +290,7 @@ Deux stratégies étaient envisageables :
 
 - afficher les n dernières offres publiées, indépendamment de la date.
 
-Nous avons ainsi choisi d’afficher les 20 offres les plus récentes, ce qui présente plusieurs avantages :
+Nous avons ainsi choisi d’afficher les 21 offres les plus récentes, ce qui présente plusieurs avantages :
 
 - réduire le volume de données transférées entre le serveur et le navigateur ;
   
@@ -298,3 +298,21 @@ Nous avons ainsi choisi d’afficher les 20 offres les plus récentes, ce qui pr
   
 - améliorer les temps d’affichage pour les utilisateurs ;
 
+L’application permettra à l’utilisateur de charger progressivement davantage d’offres, afin de pouvoir consulter les publications plus anciennes à la demande, sans surcharger l’affichage initial.
+
+Mettre la photo 
+*Fig.4_: Chargement progressif (à la demande) des offres .*
+
+| (Consulter l'index)               | CPU (Wh)                              | Mémoire (Wh)                          | Disque (Wh) | Réseau (Wh)                              | Écran (Wh)               | Total (Wh)                              |
+| ----------------- | -------------------------------------- | -------------------------------------- | ----------- | ------------------------------------------ | ------------------------- | ---------------------------------------- |
+| **Navigateur**    | 0.0010          | <del>0.00049</del><br/>0.000047        | 0.0         | 0.002             | <del>0.065</del><br/>0.068 | 0.068               |
+| **Serveur Web**   | <del>0.0000058</del><br/>0.0000053     | 0.0000029     | 0.0         | 0.0019             | 0.0                       | 0.0019           |
+| **Backend**       | <del>0.00073</del><br/>0.00071              | 0.000048              | 0.0         | 2.1e-7                  | 0.0                        | <del>0.00082</del><br/>0.00075              | 
+**Tab.9 : Effet sur l’utilisation des ressources de la consultation de l'index suite à la limitation d'affichage de données.**
+
+
+L'implémentation de la stratégie de limitation (v2.0.1) ne change pas grand chose mais on remarque que la consommation électrique de l'ensemble des composants se retrouve réduite quasiment à celle de l'écran.
+
+En l'état, la consommation électrique est constante par rapport à la volumétrie des offres, et à un niveau si bas que la part due au CPU, à la mémoire et au réseau est négligeable par rapport à celle de l'écran.
+
+## Amélioration
