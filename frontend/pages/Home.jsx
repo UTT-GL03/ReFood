@@ -37,6 +37,7 @@ function Home() {
   }, [requestedBookmark])
 
   return (
+  <>
     <main className="container">
       {offres.map((offre) => (
         <article key={offre._id} className="offre">
@@ -45,17 +46,20 @@ function Home() {
           </Link>
         </article>
       ))}
+    </main>
 
       {nextBookmark && (
-        <button
-          type="button"
-          onClick={() => setRequestedBookmark(nextBookmark)}
-          style={{ marginTop: '20px' }}
-        >
-          Suivant
-        </button>
+        <div style={{ textAlign: 'center', margin: '2rem 0' }}>
+          <button
+            type="button"
+            onClick={() => setRequestedBookmark(nextBookmark)}
+            style={{ padding: '0.8rem 1.5rem', fontSize: '1rem', cursor: 'pointer', borderRadius: '8px', backgroundColor: '#2ecc71', color: 'white', border: 'none' }}
+          >
+            Suivant
+          </button>
+        </div>
       )}
-    </main>
+    </>
   )
 }
 

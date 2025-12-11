@@ -1,11 +1,25 @@
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
 import Home from '../pages/Home'
 import Article from '../pages/Article'
-import reactLogo from './assets/react.svg'  
+import reactLogo from './assets/react.svg'
+import Header from "../components/Header"; 
+import Footer from "../components/Footer"; 
 import './App.css'
 import '@picocss/pico/css/pico.min.css'
 
+
 function App() {
+  return (
+    <BrowserRouter>
+      <Header />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/offre/:id" element={<Article />} />
+      </Routes>
+      <Footer />
+    </BrowserRouter>
+  );
+  /*
   return (
     <BrowserRouter>
       <header>
@@ -20,13 +34,10 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/offre/:id" element={<Article />} />
-        {/* Autres routes possibles :
-            <Route path="/offres" element={<OffresPage />} />
-            <Route path="/utilisateurs" element={<UsersPage />} />
-        */}
       </Routes>
     </BrowserRouter>
   )
+  */
 }
 
 export default App
