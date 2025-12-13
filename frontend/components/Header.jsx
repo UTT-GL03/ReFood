@@ -13,11 +13,11 @@ export default function Header({ onSearch }) {
         onChange={(e) => onSearch(e.target.value)}
       />
 
-      <select>
-        <option value="">Tous</option>
-        <option value="don">Don</option>
-        <option value="vente">Vente</option>
-      </select>
+      <nav>
+        <Link to="/type/Légumes">🥕 Légumes</Link>
+        <Link to="/type/Fruits">🍎 Fruits</Link>
+        <Link to="/type/Pain">🍽️ Pain</Link>
+      </nav>
     </header>
   );
 }
