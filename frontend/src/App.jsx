@@ -4,7 +4,8 @@ import Article from '../pages/Article'
 import reactLogo from './assets/react.svg'
 import Header from "../components/Header"; 
 import Footer from "../components/footer"; 
-import OffresByCategorie from './OffresByCategorie.jsx'
+import OffresByCategorie from '../pages/OffresByCategorie.jsx'
+import SearchResults from '../pages/SearchResults.jsx'
 import './App.css'
 import '@picocss/pico/css/pico.min.css'
 
@@ -17,6 +18,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/offre/:id" element={<Article />} />
         <Route path="/type/:type" element={<OffresByCategorie />} />
+        <Route path="/search" element={<SearchResults />} />
       </Routes>
       <Footer />
     </BrowserRouter>

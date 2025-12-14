@@ -1,16 +1,27 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom"
+import { useState } from "react"
 
-export default function Header({ onSearch }) {
+export default function Header() {
+  const [search, setSearch] = useState("")
+  const navigate = useNavigate()
+
   return (
     <header className="header-container">
       <div className="logo">
-        <Link to="/">ReFood</Link>
+        <Link to="/" id="logo-link">ReFood</Link>
       </div>
 
-      <input 
-        type="search" 
-        placeholder="Rechercher un produit..."
-        onChange={(e) => onSearch(e.target.value)}
+      <input
+        id="search-bar"
+        type="search"
+        placeholder="Rechercher un produit ou une ville…"
+        value={search}
+        onChange={e => setSearch(e.target.value)}
+        onKeyDown={e => {
+          if (e.key === "Enter" && search.trim()) {
+            navigate(`/search?q=${encodeURIComponent(search)}`)
+          }
+        }}
       />
 
       <nav>
@@ -19,5 +30,5 @@ export default function Header({ onSearch }) {
         <Link to="/type/Pain">🍽️ Pain</Link>
       </nav>
     </header>
-  );
+  )
 }

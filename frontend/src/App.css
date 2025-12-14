@@ -34,7 +34,7 @@ header {
   background: #27ae60;
   padding: 1rem 2rem;
   display: flex;
-  align-items: center;
+  align-items: baseline;
   justify-content: space-between;
   box-shadow: 0 2px 6px rgba(0,0,0,0.15);
   position: sticky;
@@ -66,6 +66,27 @@ header img {
   height: 40px;
 }
 
+#search-bar {
+  border-radius: 20px;
+  border: none;
+  width: 60%;
+  margin-bottom: 0;
+}
+
+#header-logo {
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+#logo-link {
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: white;
+}
 
 /* ----------------------------------------------- */
 /*              CATALOGUE OFFRES (HOME)            */
