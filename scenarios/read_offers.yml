@@ -1,25 +1,21 @@
 # Scénario GreenIT CLI pour analyser les offres ReFood
 - name: Consulter les offres ReFood
-  url: http://localhost:80/   
-  waitForSelector: .offre        # On attend que les offres soient chargées
+  url: http://localhost:5173/
+  waitForSelector: .offre
 
   actions:
-    - name: Attendre le chargement complet des offres
-      type: wait
-      timeout: 10000             # Attendre jusqu'à 10s pour que les offres se chargent (API/CouchDB)
-
     - name: Ouvrir la première offre
       type: click
       element: .offre:nth-child(1) a
       pageChange: true
-      waitForSelector: article > p
+      waitForSelector: .article-layout
 
     - name: Lire le détail de la première offre
       type: scroll
 
     - name: Retour à la liste des offres
       type: click
-      element: header a  # Le lien vers l'accueil
+      element: #logo-link
       pageChange: true
       waitForSelector: .offre
 
@@ -27,7 +23,7 @@
       type: click
       element: .offre:nth-child(2) a
       pageChange: true
-      waitForSelector: article > p
+      waitForSelector: .article-layout
 
     - name: Lire le détail de la deuxième offre
       type: scroll
