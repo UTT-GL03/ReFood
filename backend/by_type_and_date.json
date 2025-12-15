@@ -1,0 +1,10 @@
+{
+  "index": {
+    "fields": [
+      { "type": "desc" },
+      { "date_publication": "desc" }
+    ]
+  },
+  "name": "by_type_and_date",
+  "type": "json"
+}

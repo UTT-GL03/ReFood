@@ -1,9 +1,13 @@
 import { Link, useNavigate } from "react-router-dom"
 import { useState } from "react"
+import { useCart } from "../src/context/CartContext"
 
 export default function Header() {
   const [search, setSearch] = useState("")
   const navigate = useNavigate()
+
+  const { cart } = useCart()
+  const count = cart.reduce((sum, item) => sum + item.quantity, 0)
 
   return (
     <header className="header-container">
@@ -28,6 +32,7 @@ export default function Header() {
         <Link to="/type/Légumes">🥕 Légumes</Link>
         <Link to="/type/Fruits">🍎 Fruits</Link>
         <Link to="/type/Pain">🍽️ Pain</Link>
+        <Link to="/cart">🧺 {count}</Link>
       </nav>
     </header>
   )

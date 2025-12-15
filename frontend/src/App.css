@@ -290,6 +290,36 @@ header img {
   flex-shrink: 0;
 }
 
+/* ----------------------------------------------- */
+/*                     PANIER                      */
+/* ----------------------------------------------- */
+
+.panier-container {
+  width: 100%;
+  margin: 2rem auto;
+  padding: 0 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+
+.quantity-controls {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  margin-bottom: 10px;
+}
+
+.quantity-controls button {
+  padding: 0.4rem 0.8rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 6px;
+  background-color: #27ae60;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
 
 /* ----------------------------------------------- */
 /*                   RESPONSIVE                    */
