@@ -24,9 +24,16 @@ runs:
       uses: actions/download-artifact@v4
       with:
         name: samples
+    
     - name: Upload samples
       run: |
-        curl -X POST http://localhost:5984/refood_db/_bulk_docs -H "Content-Type: application/json" -d @sample_data.json
+        echo "Uploading sample_data.json to CouchDB..."
+        curl -v -X POST http://localhost:5984/refood_db/_bulk_docs \
+          -H "Content-Type: application/json" \
+          -d @sample_data.json | head -50
+        echo ""
+        echo "Checking if data was loaded..."
+        curl -s http://localhost:5984/refood_db/_all_docs?limit=5
       shell: bash
 
     - name: Wait for backend
