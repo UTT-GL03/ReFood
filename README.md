@@ -316,4 +316,18 @@ L'implémentation de la stratégie de limitation (v2.0.1) ne change pas grand ch
 
 En l'état, la consommation électrique est constante par rapport à la volumétrie des offres, et à un niveau si bas que la part due au CPU, à la mémoire et au réseau est négligeable par rapport à celle de l'écran.
 
+## Intégration des images à la base de données
+
+Jusque là, nous hésitions à inclure des images à ReFood afin de maintenir une empreinte écologique minimale. Toutefois, pour une plateforme d’offres alimentaires, l'aspect visuel est indispensable à l'expérience utilisateur et à la valorisation des produits.
+
+Afin d’améliorer la pertinence de nos mesures, un champ « image » a été ajouté aux documents « offre » de la base de données. Chaque offre référence désormais une image distincte via une URL déterministe. Cette méthode permet de simuler un cas d’usage réaliste sans alourdir le stockage de la base de données, tout en permettant une analyse plus fidèle de l’impact environnemental lié au transfert des ressources médias.
+
+| Composant | CPU (Wh) | Mémoire (Wh) | Disque (Wh) | Réseau (Wh) | Écran (Wh) | Total (Wh) |
+| :--- | :---: | :---: | :---: | :---: | :---: | :---: |
+| **Navigateur** | <del>0.001</del><br/>0.0019 |<del>0.00049</del><br/>0.000072 | 0.0 | <del>0.02</del><br/>0.037 | 0.068 | <del>0.065</del><br/>0.11 |
+| **Serveur Web** | <del>0.0000053</del><br/>0.000029 | <del>0.0000029</del><br/>0.0000028 | 0.0 | <del>0.0019</del><br/>0.037 | 0.0 | <del>0.0019</del><br/>0.037 |
+| **Backend** |0.00071 | 0.000048 | 0.0 | 2.1e-7 | 0.0 | <del>0.00075</del><br/>0.00084 |
+
+On remarque forcément une hausse de consommation sur l'ensemble, passant d'une empreinte estimée de 73.77 mWh à 144.101 mWh soit une augmentation de 100% de la consommation. Cependant, il nous est compliqué de renoncer à l'ajout d'images.  
+
 ## Amélioration
