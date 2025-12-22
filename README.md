@@ -336,7 +336,7 @@ Au fil des itérations du projet ReFood, plusieurs améliorations fonctionnelles
 
 Donc parmi les fonctionnalités ajoutés, nous avons : 
 
-**Recherche et filtrage des offres**
+## Recherche et filtrage des offres
 
 Une fonctionnalité de recherche a été ajoutée afin de permettre aux utilisateurs de trouver plus rapidement des offres pertinentes (par type d’aliment, ville ou mot-clé).
 Cette amélioration permet :
@@ -348,7 +348,7 @@ D’un point de vue environnemental, un parcours plus court et plus ciblé perme
 
 <img src="benchmark/Research.png" alt="Suivant" width="760" height="688">
 
-**Panier persistant côté client (Local Storage)**
+## Panier persistant côté client (Local Storage)
 
 Afin d’améliorer l’expérience utilisateur sans augmenter inutilement les échanges réseau, nous avons mis en place un panier de produits persistant côté client, basé sur le Local Storage du navigateur.
 Cette fonctionnalité comprend :
@@ -369,7 +369,7 @@ les données du panier ne transitent pas par le réseau tant qu’aucune action 
 <img src="benchmark/Cart.png" alt="Suivant" width="760" height="688">
 <img src="benchmark/CartPage.png" alt="Suivant" width="760" height="688">
 
-**Filtrage des offres par type d’aliment**
+## Filtrage des offres par type d’aliment
 
 Pour faciliter la navigation et limiter le volume de données affichées inutilement, nous avons intégré un filtrage des offres par type d’aliment (Fruits, Légumes, Pain), accessible directement depuis la barre de navigation.
 
@@ -391,7 +391,7 @@ Ce mécanisme permet une réduction du coût énergétique par interaction utili
 <img src="benchmark/FilterType.png" alt="Suivant" width="760" height="688">
 
 
-**Affichage dynamique des images**
+## Affichage dynamique des images
 Initialement, le prototype utilisait une image statique identique pour toutes les offres, ce qui faussait les mesures d’impact environnemental.
 
 Afin de corriger cela :
