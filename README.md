@@ -331,3 +331,79 @@ Afin d’améliorer la pertinence de nos mesures, un champ « image » a été a
 On remarque forcément une hausse de consommation sur l'ensemble, passant d'une empreinte estimée de 73.77 mWh à 144.101 mWh soit une augmentation de 100% de la consommation. Cependant, il nous est compliqué de renoncer à l'ajout d'images.  
 
 ## Amélioration
+
+Au fil des itérations du projet ReFood, plusieurs améliorations fonctionnelles et techniques ont été intégrées afin de rendre le prototype plus réaliste, plus utile pour l’utilisateur et plus pertinent du point de vue de l’analyse environnementale.
+
+Donc parmi les fonctionnalités ajoutés, nous avons : 
+
+**Recherche et filtrage des offres**
+
+Une fonctionnalité de recherche a été ajoutée afin de permettre aux utilisateurs de trouver plus rapidement des offres pertinentes (par type d’aliment, ville ou mot-clé).
+Cette amélioration permet :
+- de réduire le temps passé à parcourir inutilement un grand nombre d’offres ;
+- de limiter le nombre de pages consultées pour atteindre une information pertinente ;
+- d’améliorer l’efficacité globale du parcours utilisateur.
+
+D’un point de vue environnemental, un parcours plus court et plus ciblé permet de réduire le nombre de requêtes, les temps d’affichage et donc la consommation énergétique associée à la navigation.
+
+<img src="benchmark/Research.png" alt="Suivant" width="760" height="688">
+
+**Panier persistant côté client (Local Storage)**
+
+Afin d’améliorer l’expérience utilisateur sans augmenter inutilement les échanges réseau, nous avons mis en place un panier de produits persistant côté client, basé sur le Local Storage du navigateur.
+Cette fonctionnalité comprend :
+
+- un bouton “Ajouter au panier” directement accessible depuis la page d’une offre ;
+- une icône de panier dans la barre de navigation, affichant dynamiquement le nombre d’éléments sélectionnés ;
+- une page dédiée /cart, permettant de consulter les produits ajoutés, leur quantité et les informations associées.
+
+Le panier est stocké localement dans le navigateur, ce qui permet :
+
+- de conserver les sélections de l’utilisateur entre deux visites ou rafraîchissements de page ;
+- d’éviter des requêtes serveur supplémentaires pour des données purement temporaires ;
+- de garantir une interface réactive, même en cas de connexion réseau limitée.
+
+D’un point de vue environnemental, ce choix technique s’inscrit dans une logique de sobriété numérique :
+les données du panier ne transitent pas par le réseau tant qu’aucune action serveur n’est nécessaire, ce qui réduit la consommation énergétique liée aux échanges réseau et à la charge backend.
+
+<img src="benchmark/Cart.png" alt="Suivant" width="760" height="688">
+<img src="benchmark/CartPage.png" alt="Suivant" width="760" height="688">
+
+**Filtrage des offres par type d’aliment**
+
+Pour faciliter la navigation et limiter le volume de données affichées inutilement, nous avons intégré un filtrage des offres par type d’aliment (Fruits, Légumes, Pain), accessible directement depuis la barre de navigation.
+
+Cette fonctionnalité repose sur l’utilisation d’un index dans la base de données CouchDB sur le champ type, permettant :
+
+- de récupérer uniquement les offres correspondant à la catégorie sélectionnée ;
+- d’éviter le chargement et le traitement côté client d’offres non pertinentes ;
+- de réduire la taille des réponses réseau et le volume de données manipulées par le navigateur.
+
+Chaque catégorie dispose ainsi d’une route dédiée (/type/{type}), déclenchant une requête ciblée vers la base de données.
+D’un point de vue environnemental, cette approche est plus sobre qu’un filtrage côté frontend :
+
+le navigateur ne traite que les données utiles à l’utilisateur ;
+la charge de calcul est réduite côté client ;
+les échanges réseau sont limités à un sous-ensemble des données totales.
+
+Ce mécanisme permet une réduction du coût énergétique par interaction utilisateur, tout en améliorant la lisibilité et l’efficacité du parcours de navigation.
+
+<img src="benchmark/FilterType.png" alt="Suivant" width="760" height="688">
+
+
+**Affichage dynamique des images**
+Initialement, le prototype utilisait une image statique identique pour toutes les offres, ce qui faussait les mesures d’impact environnemental.
+
+Afin de corriger cela :
+chaque offre référence désormais une image via une URL déterministe ;
+les images sont chargées dynamiquement en fonction de l’identifiant de l’offre.
+
+Cette évolution permet :
+
+- d’obtenir des mesures EcoIndex plus réalistes ;
+- de simuler un cas d’usage proche d’une application réelle ;
+- d’éviter l’usage de CDN ou de ressources externes lourdes.
+
+L’ajout d’images augmente mécaniquement la consommation énergétique mais leur intégration est justifiée par leur valeur fonctionnelle surtout dans notre contexte de site de vente de produit et leur importance pour la compréhension et l’attractivité des offres.
+
+<img src="benchmark/ImagesDynamiques.png" alt="Suivant" width="760" height="688">
