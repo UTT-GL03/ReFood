@@ -322,6 +322,8 @@ Jusque là, nous hésitions à inclure des images à ReFood afin de maintenir un
 
 Afin d’améliorer la pertinence de nos mesures, un champ « image » a été ajouté aux documents « offre » de la base de données. Chaque offre référence désormais une image distincte via une URL déterministe. Cette méthode permet de simuler un cas d’usage réaliste sans alourdir le stockage de la base de données, tout en permettant une analyse plus fidèle de l’impact environnemental lié au transfert des ressources médias.
 
+<img src="benchmark/ImagesDynamiques.png" alt="Suivant" width="760" height="688">
+
 | Composant | CPU (Wh) | Mémoire (Wh) | Disque (Wh) | Réseau (Wh) | Écran (Wh) | Total (Wh) |
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: |
 | **Navigateur** | <del>0.001</del><br/>0.0019 |<del>0.00049</del><br/>0.000072 | 0.0 | <del>0.02</del><br/>0.037 | 0.068 | <del>0.065</del><br/>0.11 |
@@ -336,7 +338,7 @@ Au fil des itérations du projet ReFood, plusieurs améliorations fonctionnelles
 
 Donc parmi les fonctionnalités ajoutés, nous avons : 
 
-## Recherche et filtrage des offres
+### Recherche et filtrage des offres
 
 Une fonctionnalité de recherche a été ajoutée afin de permettre aux utilisateurs de trouver plus rapidement des offres pertinentes (par type d’aliment, ville ou mot-clé).
 Cette amélioration permet :
@@ -348,7 +350,7 @@ D’un point de vue environnemental, un parcours plus court et plus ciblé perme
 
 <img src="benchmark/Research.png" alt="Suivant" width="760" height="688">
 
-## Panier persistant côté client (Local Storage)
+### Panier persistant côté client (Local Storage)
 
 Afin d’améliorer l’expérience utilisateur sans augmenter inutilement les échanges réseau, nous avons mis en place un panier de produits persistant côté client, basé sur le Local Storage du navigateur.
 Cette fonctionnalité comprend :
@@ -369,7 +371,7 @@ les données du panier ne transitent pas par le réseau tant qu’aucune action 
 <img src="benchmark/Cart.png" alt="Suivant" width="760" height="688">
 <img src="benchmark/CartPage.png" alt="Suivant" width="760" height="688">
 
-## Filtrage des offres par type d’aliment
+### Filtrage des offres par type d’aliment
 
 Pour faciliter la navigation et limiter le volume de données affichées inutilement, nous avons intégré un filtrage des offres par type d’aliment (Fruits, Légumes, Pain), accessible directement depuis la barre de navigation.
 
@@ -390,20 +392,33 @@ Ce mécanisme permet une réduction du coût énergétique par interaction utili
 
 <img src="benchmark/FilterType.png" alt="Suivant" width="760" height="688">
 
+Avec l’ajout de toutes ces fonctionnalités, il devient intéressant de comparer nos mesures d’ecoIndex et de GreenFrame entre la phase de passage à l’échelle et la version finale de ReFood.
 
-## Affichage dynamique des images
-Initialement, le prototype utilisait une image statique identique pour toutes les offres, ce qui faussait les mesures d’impact environnemental.
+| Scénario | EcoIndex | GES (gCO2e) | Taille du DOM | Requêtes | Taille de la page (ko) |
+|---|---|---|---|---|---|
+| 1. Consulter la page des offres | <del>39 E 🔴</del><br/>59 C 🟡 | <del>2.20</del><br/>1.86 | <del>54 015 </del><br/>405 | <del>7</del><br/>27 | <del>1882</del><br/>6629.2 |
+| 2. Choisir une offre et la charger (inclut Lire le détail de l'offre)| <del>86 A 🟢</del><br/>87 A 🟢| <del>1.13</del><br/>1.26 | <del>35</del><br/>67 | <del>6</del><br/>10 (6 et 4) | <del>1 881</del><br/>180 |
+| 3. Revenir à l'accueil et consulter à nouveau la page des offres | <del>52 D 🟡</del><br/>59 C 🟡 | <del>1.95</del><br/>1.84 | <del>54 015</del><br/>405 | <del>5</del><br/>23 | <del>344</del><br/>6279 |
+| 4. Choisir une nouvelle offre (inclut Lire le détail de l'offre) | <del>95 A 🟢</del><br/>87 A 🟢 | <del>1.13</del><br/>1.26 | <del>35</del><br/>67 | <del>6</del><br/>10(4+6)| <del>344</del><br/>180 |
 
-Afin de corriger cela :
-chaque offre référence désormais une image via une URL déterministe ;
-les images sont chargées dynamiquement en fonction de l’identifiant de l’offre.
+On observe une nette amélioration des performances environnementales par rapport à la phase de passage à l’échelle, et ce malgré un site désormais beaucoup plus complet et fonctionnel. En comparaison à nos concurrents, ReFood affiche un EcoIndex plus intéressant, et donc un impact environnemental réduit. Cette performance traduit une meilleure éco-conception, tant au niveau du front-end que de l’architecture globale, et renforce la pertinence de ReFood comme solution à la fois efficace, responsable et durable.
 
-Cette évolution permet :
+| Composant       | CPU (Wh) | Mémoire (Wh) | Disque (Wh) | Réseau (Wh) | Écran (Wh) | Total (Wh) |
+| :-------------- | :------: | :----------: | :---------: | :---------: | :--------: | :--------: |
+| **Navigateur**  |  0.0019  |   0.000072   |     0.0     |    0.037    |    0.068   |    0.11    |
+| **Serveur Web** | 0.000029 |   0.0000028  |     0.0     |    0.037    |     0.0    |    0.037   |
+| **Backend**     |  0.00071 |   0.000048   |     0.0     |    2.1e-7   |     0.0    |   0.00084  |
 
-- d’obtenir des mesures EcoIndex plus réalistes ;
-- de simuler un cas d’usage proche d’une application réelle ;
-- d’éviter l’usage de CDN ou de ressources externes lourdes.
+Enfin, voici le détail de la consommation énergétique finale mesurée pour chaque composant du système lors de l’exécution du scénario.
+On observe que le navigateur est de loin le principal contributeur à la consommation énergétique totale, avec 0,11 Wh, soit la majorité de l’énergie consommée durant le scénario. Cette consommation est principalement due :
 
-L’ajout d’images augmente mécaniquement la consommation énergétique mais leur intégration est justifiée par leur valeur fonctionnelle surtout dans notre contexte de site de vente de produit et leur importance pour la compréhension et l’attractivité des offres.
+  - au réseau (0,037 Wh), lié au chargement des ressources,
+  - à l’écran (0,068 Wh), qui reste un poste incompressible côté utilisateur,
+  - ainsi qu’à une légère hausse de la consommation CPU par rapport à la version précédente.
 
-<img src="benchmark/ImagesDynamiques.png" alt="Suivant" width="760" height="688">
+Le serveur web présente une consommation très faible (0,037 Wh), essentiellement imputable au réseau, ce qui est cohérent avec son rôle limité à la distribution de contenus statiques. Les consommations CPU et mémoire restent négligeables.
+
+Le backend affiche une consommation totale extrêmement faible (0,00084 Wh). Cela montre que les traitements côté serveur sont efficaces et bien maîtrisés, avec un impact énergétique quasi nul par rapport aux autres composants.
+
+## Synthèse : Retrospective sur le résultat, le processus et les enseignements à en tirer.
+
