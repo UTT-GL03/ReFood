@@ -316,7 +316,7 @@ L'implémentation de la stratégie de limitation (v2.0.1) ne change pas grand ch
 
 En l'état, la consommation électrique est constante par rapport à la volumétrie des offres, et à un niveau si bas que la part due au CPU, à la mémoire et au réseau est négligeable par rapport à celle de l'écran.
 
-## Intégration des images à la base de données
+## Intégration (dynamique) des images à la base de données
 
 Jusque là, nous hésitions à inclure des images à ReFood afin de maintenir une empreinte écologique minimale. Toutefois, pour une plateforme d’offres alimentaires, l'aspect visuel est indispensable à l'expérience utilisateur et à la valorisation des produits.
 
@@ -392,7 +392,20 @@ Ce mécanisme permet une réduction du coût énergétique par interaction utili
 
 <img src="benchmark/FilterType.png" alt="Suivant" width="760" height="688">
 
-Avec l’ajout de toutes ces fonctionnalités, il devient intéressant de comparer nos mesures d’ecoIndex et de GreenFrame entre la phase de passage à l’échelle et la version finale de ReFood.
+Avec l’ajout de toutes ces fonctionnalités, il devient intéressant de comparer nos mesures d’ecoIndex et de GreenFrame entre la phase de passage à l’échelle, la version avant les améliorations et la version finale de ReFood. 
+
+Tableau de l'écoindex avant l'ajout des fonctionnalités : 
+
+| Scénario | EcoIndex | GES (gCO2e) | Taille du DOM | Requêtes | Taille de la page (ko) |
+|---|---|---|---|---|---|
+| 1. Consulter la page des offres | <del>39 E 🔴</del><br/>73 B 🟢 | <del>2.20</del><br/>1.54 | <del>54 015 </del><br/>394 | <del>7</del><br/>8 | <del>1882</del><br/>350 |
+| 2. Choisir une offre et la charger (inclut Lire le détail de l'offre)| <del>86 A 🟢</del><br/>90 A 🟢| <del>1.13</del><br/>1.2 | 35 | <del>6</del><br/>6 (3 et 3) | <del>1 881</del><br/>178 |
+| 3. Revenir à l'accueil et consulter à nouveau la page des offres | <del>52 D 🟡</del><br/>94 A 🟢 | <del>1.95</del><br/>1.12 | <del>54 015</del><br/>15 | <del>5</del><br/>3 | <del>344</del><br/>0 |
+| 4. Choisir une nouvelle offre (inclut Lire le détail de l'offre) | <del>95 A 🟢</del><br/>94 A 🟢 | <del>1.13</del><br/>1.12 | 35 | <del>6</del><br/>3| <del>344</del><br/>178 |
+
+A noter que cette mesure d'ecoIndex a été faite avant l'intégration dynamique des images sur ReFood ce qui explique que les résultats sont excellents et donc pas vraiment comparable au tableau après l'ajout des fonctionnalités car celui ci prend en compte cette grande différence. 
+
+Tableau après ajout des fonctionnalités :
 
 | Scénario | EcoIndex | GES (gCO2e) | Taille du DOM | Requêtes | Taille de la page (ko) |
 |---|---|---|---|---|---|
@@ -401,7 +414,9 @@ Avec l’ajout de toutes ces fonctionnalités, il devient intéressant de compar
 | 3. Revenir à l'accueil et consulter à nouveau la page des offres | <del>52 D 🟡</del><br/>59 C 🟡 | <del>1.95</del><br/>1.84 | <del>54 015</del><br/>405 | <del>5</del><br/>23 | <del>344</del><br/>6279 |
 | 4. Choisir une nouvelle offre (inclut Lire le détail de l'offre) | <del>95 A 🟢</del><br/>87 A 🟢 | <del>1.13</del><br/>1.26 | <del>35</del><br/>67 | <del>6</del><br/>10(4+6)| <del>344</del><br/>180 |
 
-On observe une nette amélioration des performances environnementales par rapport à la phase de passage à l’échelle, et ce malgré un site désormais beaucoup plus complet et fonctionnel. En comparaison à nos concurrents, ReFood affiche un EcoIndex plus intéressant, et donc un impact environnemental réduit. Cette performance traduit une meilleure éco-conception, tant au niveau du front-end que de l’architecture globale, et renforce la pertinence de ReFood comme solution à la fois efficace, responsable et durable.
+On observe une nette amélioration des performances environnementales par rapport à la phase de passage à l’échelle, et ce malgré un site désormais beaucoup plus complet et fonctionnel. En revanche, on remarque une baisse importante de notre ecoIndex par rapport à notre tableau avant l'ajout des améliorations puisque comme expliqué précedemment celui-ci ne prend pas en compte la charge dynamique des images. Cependant, les résultats restent plutôt positif mais on remarque que la gestion du cache est largement moins bien géré après les ajouts.
+
+En comparaison à nos concurrents, ReFood affiche un EcoIndex plus intéressant, et donc un impact environnemental réduit. Cette performance traduit une meilleure éco-conception, tant au niveau du front-end que de l’architecture globale, et renforce la pertinence de ReFood comme solution à la fois efficace, responsable et durable.
 
 | Composant       | CPU (Wh) | Mémoire (Wh) | Disque (Wh) | Réseau (Wh) | Écran (Wh) | Total (Wh) |
 | :-------------- | :------: | :----------: | :---------: | :---------: | :--------: | :--------: |
