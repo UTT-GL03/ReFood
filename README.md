@@ -403,7 +403,7 @@ Tableau de l'écoindex avant l'ajout des fonctionnalités :
 | 3. Revenir à l'accueil et consulter à nouveau la page des offres | <del>52 D 🟡</del><br/>94 A 🟢 | <del>1.95</del><br/>1.12 | <del>54 015</del><br/>15 | <del>5</del><br/>3 | <del>344</del><br/>0 |
 | 4. Choisir une nouvelle offre (inclut Lire le détail de l'offre) | <del>95 A 🟢</del><br/>94 A 🟢 | <del>1.13</del><br/>1.12 | 35 | <del>6</del><br/>3| <del>344</del><br/>178 |
 
-A noter que cette mesure d'ecoIndex a été faite avant l'intégration dynamique des images sur ReFood ce qui explique que les résultats sont excellents et donc pas vraiment comparable au tableau après l'ajout des fonctionnalités car celui ci prend en compte cette grande différence. 
+A noter que cette mesure d'ecoIndex a été faite avant l'intégration dynamique des images sur ReFood ce qui explique que les résultats sont excellents et donc pas vraiment comparable aux mesures après l'ajout des fonctionnalités car celui ci prend en compte cette grande différence. 
 
 Tableau après ajout des fonctionnalités :
 
@@ -414,7 +414,7 @@ Tableau après ajout des fonctionnalités :
 | 3. Revenir à l'accueil et consulter à nouveau la page des offres | <del>52 D 🟡</del><br/>59 C 🟡 | <del>1.95</del><br/>1.84 | <del>54 015</del><br/>405 | <del>5</del><br/>23 | <del>344</del><br/>6279 |
 | 4. Choisir une nouvelle offre (inclut Lire le détail de l'offre) | <del>95 A 🟢</del><br/>87 A 🟢 | <del>1.13</del><br/>1.26 | <del>35</del><br/>67 | <del>6</del><br/>10(4+6)| <del>344</del><br/>180 |
 
-On observe une nette amélioration des performances environnementales par rapport à la phase de passage à l’échelle, et ce malgré un site désormais beaucoup plus complet et fonctionnel. En revanche, on remarque une baisse importante de notre ecoIndex par rapport à notre tableau avant l'ajout des améliorations puisque comme expliqué précedemment celui-ci ne prend pas en compte la charge dynamique des images. Cependant, les résultats restent plutôt positif mais on remarque que la gestion du cache est largement moins bien géré après les ajouts.
+On observe une nette amélioration des performances environnementales par rapport à la phase de passage à l’échelle, et ce malgré un site désormais beaucoup plus complet et fonctionnel. En revanche, on constate une baisse significative de notre EcoIndex par rapport aux mesures réalisées avant l’ajout des améliorations ; comme expliqué précédemment, cet indicateur ne prend pas en compte le chargement dynamique des images. Malgré cela, les résultats restent globalement positifs, même si l’on remarque que la gestion du cache est nettement moins bien maîtrisée après l’intégration de ces nouvelles fonctionnalités, ce qui laisserait cette piste à explorer.
 
 En comparaison à nos concurrents, ReFood affiche un EcoIndex plus intéressant, et donc un impact environnemental réduit. Cette performance traduit une meilleure éco-conception, tant au niveau du front-end que de l’architecture globale, et renforce la pertinence de ReFood comme solution à la fois efficace, responsable et durable.
 
