@@ -435,5 +435,7 @@ Le serveur web présente une consommation très faible (0,037 Wh), essentielleme
 
 Le backend affiche une consommation totale extrêmement faible (0,00084 Wh). Cela montre que les traitements côté serveur sont efficaces et bien maîtrisés, avec un impact énergétique quasi nul par rapport aux autres composants.
 
-## Synthèse : Retrospective sur le résultat, le processus et les enseignements à en tirer.
+## Bilan et perspectives
+
+Le premier point, qui nous a particulièrement surpris, concerne la consommation d’eau estimée par GreenIT Analysis. Nous ne l'avons pas intégré à nos tableaux de mesures GreenIT mais pour le simple chargement de la page d’index du site, la mesure était de 2,79 cl, ce qui peut sembler élevé pour une seule page. En considérant l’ensemble du trafic mondial et la multiplicité des requêtes sur Internet, cette dépense d’eau devient très grande. Cela montre qu’au-delà de l’énergie, d’autres ressources naturelles sont impactées par le fonctionnement des applications web et mérite une attention accrue dans le développement durable numérique. De plus, j'ai personnellement (Simon) eu l’impression de “gâcher” de l’eau en effectuant certaines tâches qui n’étaient pas indispensables, comme recharger plusieurs fois la même page pour tester le front-end ou générer des données de test répétitives. Même si chaque action individuelle semble insignifiante, GreenIT Analysis nous rappelle que chaque requête consomme de l’énergie, et donc de l’eau, et que l’accumulation de ces actions a un impact réel, même à petite échelle.
 
